@@ -1,0 +1,50 @@
+
+  
+  <view style="position: relative;padding:15px 15px 0px 15px" >
+    <view class="tabelli">
+      <label class="label" style="width:20%;text-align:center;float:left"><text>日期</text></label>
+      <label class="label" style="width:20%;text-align:center;float:left"><text>时间</text></label>
+      <label class="label" style="width:60%;text-align:center;float:left"><text>地点</text></label>
+    </view>
+    <scroll-view style="height:{{scrollheight}}px" scroll-y="{{true}}" onScroll="myscrolllist">
+      <view a:if={{list.data}} class="scrollList" style="margin-bottom:80px;" >
+        <block a:for={{list.data}}>
+          <view class="tabelli" >
+            <label class="label" style="width:20%;text-align:center;float:left"><text>{{item.onDate}}</text></label>
+            <label class="label" style="width:20%;text-align:center;float:left"><text>{{item.onTime+" "+item.type}}</text></label>
+            <label class="label" style="width:60%;text-align:left;float:left">{{isValid}}<text>{{item.address}}</text></label>
+          </view>
+        </block>
+      </view>
+      <view class="list-bottom-msg" style="text-align:center; margin-top:-65px;">{{list.loadtext}}</view>
+    </scroll-view>
+  </view>
+<view style="position:absolute;bottom:40%;right:20px;width:40px;height:60px">
+  <view onTap="openDatePicker">
+    <image style="width:30px;height:28px;border: 1px solid #ccc;background-color: #fdfbfb;" src="../../../../images/clock.png"/>
+  </view>
+</view>
+<block a:if="{{DatePicker.isShow}}">
+<view class="city-picker-mask" a:if="{{DatePicker.isShow}}">
+    <view class="city-picker-inner section">
+        <view class="city-header page-section-demo ">
+              <button type="default" onTap="closeDatePicker" class="city-cancel">取消</button>
+              <button type="primary" onTap="openDatePicker" class="city-true">确定</button>
+        </view>
+        <view class="city-header page-section-demo " style="height:20px;line-height:20px;text-align:center;color:#ccc" onTap="cleartime">
+        全部时间
+        </view>
+        <picker-view value="{{DatePicker.val}}" onChange="DatePickerChange" class="citybody">
+          <picker-view-column>
+              <view class="picker-column-item" a:for="{{DatePicker.year}}" a:key="item">{{item}}</view>
+          </picker-view-column>
+          <picker-view-column>
+             <view class="picker-column-item" a:for="{{DatePicker.month}}" a:key="item">{{item}}</view>
+          </picker-view-column>
+          <picker-view-column> 
+             <view class="picker-column-item" a:for="{{DatePicker.day}}" a:key="item">{{item}}</view>
+          </picker-view-column>
+        </picker-view>
+    </view>
+  </view>
+</block>

@@ -1,0 +1,48 @@
+<view>
+  <view class="page_nav">
+     <view class="search">
+        <icon type="search"  size="14" style="position: absolute;left: 20px;top: 15px;"/>
+        <input type="text" onInput="searchchange" class="searchinput " style="width:{{inputwidth}}px" placeholder="输入关键字查询" onFocus="focuchange" onBlur="blurchange"/>
+        <button type="default" a:if={{Issearchbtn}} onTap="search"  class="searchbtn" plain>搜索</button>
+      </view>
+      <view class="searchtitle">商机列表</view>
+  </view>
+  <view class="page_content">
+    <view>
+        <view style="position: relative;" >
+          <scroll-view style="height:{{scrollheight}}px"  scroll-y="{{true}}"	onScroll="scroll"  >
+            <view a:if={{ProjectList.data}} class="scrollList"  >
+                <block a:for={{ProjectList.data}}>
+                    <view  data-projectId="{{item.projectId}}"
+                           data-projectName="{{item.projectName}}"
+                           data-custId="{{item.custId}}" 
+                           data-custName="{{item.custName}}" 
+                           data-classId="{{item.classId}}" 
+                           data-projectNo="{{item.projectNo}}"
+                           data-linkman="{{item.linkman}}"
+                           data-tel="{{item.tel}}"
+                           data-endLinkMan="{{item.endLinkMan}}"
+                           data-endLinkWay="{{item.endLinkWay}}"
+                           data-linkWay="{{item.projectState}}"
+                           data-linkWayName="{{item.projectStatetext}}"
+                           class="followLi" onTap="{{ProjectList.oncheck}}">
+                      <view style="overflow: hidden;">
+                          <label style="float:left"><text>{{item.custName}}</text></label>
+                          <label style="float:right"><text>{{item.projectStatetext}}</text></label>
+                      </view>
+                      <view style="overflow: hidden;" class="usernamecolor">
+                           <label style="float:left"><text>{{item.projectName+"("+item.createUser+")"}}</text></label>
+                          <label style="float:right"><text>{{"¥"+item.estimatePrice+"元"}}</text></label>
+                      </view>
+                    </view>
+                </block>
+            </view>
+            <view class="list-bottom-msg">{{ProjectList.loadtext}}</view>
+          </scroll-view>
+        </view>
+        <view style="position:absolute;bottom:100px;right:20px;width:40px;height:60px">
+            <view onTap="refreshre"><image style="width:30px;height:28px" src="../../../../images/reject.png" /></view>
+        </view>
+    </view>
+  </view>
+</view>

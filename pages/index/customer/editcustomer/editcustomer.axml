@@ -1,0 +1,134 @@
+<view class="page">
+  <view class="savelist">
+    <view class="saveul">
+        <view class="saveli">
+          <label class="savespan"><text >客户名称</text></label>
+          <input type="text" placeholder="必填" name="custName" value="{{custinfo.customer.custName}}" data-name="custName" class="saveinput" onInput="getinputvalue"  />
+          <label class="select_label floatright" >
+            <view onTap="repeatCustomer">
+              <icon type="search" size="{{16}}" style="margin-left:4px" />
+            </view>
+          </label>
+        </view>
+        <view class="saveli" onTap="custtypeList_open">
+          <label class="savespan"><text >客户类型</text></label>
+          <label class="select_label floatright" >
+            <text class="select_label_text">
+            {{custinfo.customer.typeName}}
+            </text>
+          <image  src="../../../../images/left.png" class="floatright img"  />
+          </label>
+        </view>
+        <view class="saveli" onTap="areamodel_open">
+          <label class="savespan"><text >客户区域</text></label>
+          <label class="select_label floatright" >
+            <text class="select_label_text">
+            {{custinfo.customer.province+' '+custinfo.customer.city+' '+custinfo.customer.county}}
+            </text>
+          <image  src="../../../../images/left.png" class="floatright img"  />
+          </label>
+          <!-- <input type="text" disabled="disabled" name="areatext" value="{{custinfo.province+' '+custinfo.city+' '+custinfo.county}}"  class="saveinput"  /> -->
+        </view>
+         <view class="saveli" onTap="sourceList_open">
+          <label class="savespan"><text >客户来源</text></label>
+          <label class="select_label floatright" >
+            <text class="select_label_text">
+            {{custinfo.extend.sourcetext}}
+            </text>
+          <image  src="../../../../images/left.png" class="floatright img"  />
+          </label>
+        </view>
+        <view class="saveli" onTap="industryList_open">
+          <label class="savespan"><text >客户行业</text></label>
+          <label class="select_label floatright" >
+            <text class="select_label_text">
+            {{custinfo.customer.industry}}
+            </text>
+          <image  src="../../../../images/left.png" class="floatright img"  />
+          </label>
+        </view>
+        <view class="saveli">
+          <label class="savespan"><text style="margin-right:2em" >地</text><text>址</text></label>
+          <input type="text" placeholder="请输入详细地址"  value="{{custinfo.customer.address}}"  class="saveinput" data-name="address" onInput="getinputvalue"   />
+          <label class="select_label floatright" >
+             <image  src="../../../../images/loader.png" class="floatright img" style="width: 14px;" onTap="getlocation"  />
+          </label>
+        </view>
+        <view class="saveli">
+          <label class="savespan"><text >公司总机</text></label>
+          <input type="text"  name="tel" value="{{custinfo.extend.tel}}"  class="saveinput" data-name="tel" onInput="getinputvalue"   />
+        </view>
+        <view class="saveli">
+          <label class="savespan"><text >公司传真</text></label>
+          <input type="text"  name="fax" value="{{custinfo.extend.fax}}"  class="saveinput" data-name="fax" onInput="getinputvalue"  />
+        </view>
+    </view>
+  </view>
+  <view style="width:100%;position: absolute;bottom:10px;">
+   <button form-type="submit" type="primary" style="margin:0px 15px;" onTap="submitsave" >保存</button>
+  </view>
+</view>
+
+
+
+<block a:if="{{areamodel.isShow}}">
+    <view class="city-picker-mask" a:if="{{areamodel.isShow}}">
+        <view class="city-picker-inner section">
+           <view class="city-header page-section-demo ">
+                 <button type="default" onTap="areamodel_close" class="city-cancel">取消</button>
+                 <button type="primary" onTap="areamodel_open" class="city-true">确定</button>
+           </view>
+           <picker-view value="{{areamodel.value}}" onChange="areamodel_onChange" class="citybody">
+              <picker-view-column>
+                 <view class="picker-column-item" a:for="{{areamodel.provinces}}" a:key="item">{{item.text}}</view>
+              </picker-view-column>
+              <picker-view-column>
+                 <view class="picker-column-item" a:for="{{areamodel.citys}}" a:key="item">{{item.text}}</view>
+              </picker-view-column>
+              <picker-view-column>
+                 <view class="picker-column-item" a:for="{{areamodel.countys}}" a:key="item">{{item.text}}</view>
+              </picker-view-column>
+           </picker-view>
+        </view>
+    </view>
+    <view class="city-picker-mask" a:if="{{custtypeList.isShow}}">
+        <view class="city-picker-inner section">
+           <view class="city-header page-section-demo ">
+                 <button type="default" onTap="custtypeList_close" class="city-cancel">取消</button>
+                 <button type="primary" onTap="custtypeList_open" class="city-true">确定</button>
+           </view>
+           <picker-view value="{{custtypeList.value}}" onChange="custtypeList_onChange"  class="citybody">
+              <picker-view-column>
+                 <view class="picker-column-item" a:for="{{custtypeList.data}}" a:key="item">{{item.text}}</view>
+              </picker-view-column>
+           </picker-view>
+        </view>
+    </view>
+    <view class="city-picker-mask" a:if="{{industryList.isShow}}">
+        <view class="city-picker-inner section">
+           <view class="city-header page-section-demo ">
+                 <button type="default" onTap="industryList_close" class="city-cancel">取消</button>
+                 <button type="primary" onTap="industryList_open" class="city-true">确定</button>
+           </view>
+           <picker-view value="{{industryList.value}}" onChange="industryList_onChange" class="citybody">
+            <picker-view-column>
+                 <view class="picker-column-item" a:for="{{industryList.data}}" a:key="item">{{item.text}}</view>
+              </picker-view-column>
+           </picker-view>
+        </view>
+      </view>
+      <view class="city-picker-mask" a:if="{{sourceList.isShow}}">
+        <view class="city-picker-inner section">
+           <view class="city-header page-section-demo ">
+                 <button type="default" onTap="sourceList_close" class="city-cancel">取消</button>
+                 <button type="primary" onTap="sourceList_open" class="city-true">确定</button>
+           </view>
+           <picker-view value="{{sourceList.value}}" onChange="sourceList_onChange" class="citybody">
+              <picker-view-column>
+                 <view class="picker-column-item" a:for="{{sourceList.data}}" a:key="item">{{item.text}}</view>
+              </picker-view-column>
+           </picker-view>
+        </view>
+    </view>
+</block>
+

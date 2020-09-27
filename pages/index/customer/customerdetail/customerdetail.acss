@@ -1,0 +1,141 @@
+.page_nav{
+    width: 100%;
+    height: 65px;
+    background-color: #66CCCC;
+}
+.page_nav_content{
+    padding: 11px 15px;
+    overflow: hidden;
+}
+.media-object{
+    line-height: 45px;
+    height:42px;
+    max-width: 45px;
+    width: 45px;
+    background-image: url(../../../../images/important.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    text-align: center; 
+    margin-right: 10px;
+}
+
+.media-body{
+    height:44px;
+    overflow: hidden;
+    color: #fff;
+    font-size: 16px;
+}
+.media-text{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #fff;
+    font-size: 14px;
+}
+.float-left{
+    float:left;
+}
+.float-right{
+    float:right;
+}
+.blockobject{
+    display: block;
+    overflow: hidden;
+    width:100%;
+    height:22px;
+}
+.page_content_tap{
+    width: 100%;
+    height: 50px;
+    background-color: #fff;
+}
+.page_content_li{
+    width: 32%;
+    line-height: 40px;
+    display: inline-block;
+    text-align: center;
+    color: #4C4C4C;
+    text-decoration: none;
+}
+.tap_active{
+    color: #66CCCC;
+    border-bottom: 2px solid #66CCCC;
+}
+.list{
+    padding:0px 10px 20px 10px;
+}
+.scrollList{
+    margin-bottom: 80px;
+}
+.list-bottom-msg{
+    text-align:center;
+    font-size:12px;
+    font-weight:bold;
+    color:#5a5a5a;
+    margin-top: -65px;
+}
+.linkcard{
+    margin-top:10px;
+    border-top:1px solid #ccc;
+    border-bottom:1px solid #ccc;
+    background-color:white;
+    font-size:12px;
+}
+.linktitle{
+     padding: 5px 15px;
+}
+.mainlink{
+    border-left:3px solid #FBAB4A;
+}
+.otherlink{
+    border-left:3px solid #66CCCC;
+}
+.linkphone{
+    height:30px;
+    line-height:30px;
+    padding-left: 18px;
+}
+.linktel{
+    height:31px;
+    line-height:30px;
+    border-bottom:1px solid #ccc;
+    padding-left: 18px;
+}
+.linkoption{
+    overflow: hidden;
+    padding: 5px;
+}
+.iconsize{
+    width:18px;
+    height:15px;
+    vertical-align: middle;
+}
+
+.List-bottom{
+    padding:8px 0px;
+    width:100%;
+    position: absolute;
+    bottom:0px;
+    height:30px;
+    line-height:30px;
+    color:#FBAB4A;
+    text-align:center;
+    background-color:white;
+    font-size:18px;
+    /* font-weight:bold; */
+}
+.List-bottom-texticon{
+    font-size: 18px;
+    margin-right: 5px;
+    font-weight: bold;
+}
+.btnclose{
+    float: right;
+    height: 24px;
+    line-height: 20px;
+    font-size: 12px;
+    padding: 2px 3px;
+    border:none;
+    margin:0px;
+    background-color: #fff;
+}

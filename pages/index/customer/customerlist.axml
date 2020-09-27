@@ -1,0 +1,33 @@
+<import src="../../CommonComponent/list/index.axml" />
+
+<template name="custList" >
+    <view class="page">
+        <view class="page-section">
+            <view class="page-section-demo">
+                <scroll-view id="custlistsrcoll"  style="height:{{srcheight}}px}" scroll-top="{{scrollTop}}" scroll-y="{{true}}"	onScroll="scroll" onScrollToUpper="scrollToUpper" onScrollToLower="scrollToLower" upper-threshold="0" onScroll="scroll" >
+                <view>
+                    <view class="a-list">
+                        <view a:if={{data}} class="a-list-items">
+                            <block a:for={{data}}>
+                                <view
+                                    class="a-list-item {{index !== (data.length - 1) ? '': 'last'}} am-list-item-{{item.align || 'middle'}}"
+                                    hover-class="a-list-item-hover"
+                                    onTap="{{onItemTap}}"
+                                    data-index={{index}}
+                                >
+                                    <view class="a-list-item-line {{item.textMode ? 'a-list-item-line-' + item.textMode : ''}}">
+                                    <view class="list-left" >{{item.custname}}</view>
+                                    <view class="list-right">{{item.ownname}}</view>
+                                    <view class="list-left usernamecolor">{{item.custtype}}</view>
+                                    <view class="list-right usernamecolor">{{item.createdate}}</view>
+                                    </view>
+                                </view>
+                            </block>
+                        </view>
+                    </view>
+                </view>
+                </scroll-view>
+            </view>
+        </view>
+    </view>
+</template>

@@ -1,0 +1,159 @@
+<import src="../../../CommonComponent/userInfo/userInfo.axml" />
+<view>
+  <view class="page_nav">
+     <view class="search">
+        <icon type="search"  size="14" style="position: absolute;left: 20px;top: 15px;"/>
+        <input type="text" onInput="searchchange" class="searchinput" style="width:{{inputwidth}}px" placeholder="输入用户或公司名称" onFocus="focuchange" onBlur="blurchange"/>
+        <button type="default" a:if={{Issearchbtn}} onTap="search"  class="searchbtn" plain>搜索</button>
+      </view>
+      <view class="searchtitle">人员选择</view>
+  </view>
+  <view class="page_content" style="background-color:white;padding:0px 8px;">
+    <view>
+         <view a:if={{userList.data}} class="scrollList"  >
+            <block a:for={{userList.data}}>
+              <!-- 集团及人员-->
+                <view class="userLi" >
+                  <view class="{{item.checkeds==1?'OpenLi':'FoldLi'}}" data-item="{{item}}" catchTap="tapfirst">
+                    
+                  </view>
+                  <image  src="../../../../images/compay_icon.png" class="floatright showimage"  />
+                  <view style="float:left;padding-left:5px;width:{{userList.rightwidth}}">
+                      {{item.Name}}
+                  </view>
+                </view>
+                <!--公司及人员-->
+                  <view class="userLi_two" a:if={{item.checkeds==1}}>
+                    <block a:for={{item.children}} a:for-item="item0">
+                      <view class="userLi_two">
+                        <view class="{{item.checkeds==1?'OpenLi':'FoldLi'}}" data-item="{{item}}" catchTap="tapfirst">
+                  
+                        </view>
+                        <image  src="{{item.typeId==1?'../../../../images/compay_icon.png':'../../../../images/dept_icon.png'}}" class="floatright showimage"  />
+                        <view style="float:left;padding-left:5px;width:{{userList.rightwidth}}">
+                            {{item.Name}}
+                        </view>
+                      </view>
+                          <!--部门及人员-->
+                          <view class="userLi_two" a:if={{item.checkeds==1}}>
+                            <block a:for={{item.children}} a:for-item="item1" >
+                              <view class="userLi_two">
+                                <view class="{{item.checkeds==1?'OpenLi':'FoldLi'}}" data-item="{{item}}" catchTap="tapfirst">
+                          
+                                </view>
+                                <image  src="{{item.typeId==1?'../../../../images/compay_icon.png':'../../../../images/dept_icon.png'}}" class="floatright showimage"  />
+                                <view style="float:left;padding-left:5px;width:{{userList.rightwidth}}">
+                                    {{item.Name}}
+                                </view>
+                              </view>
+                              <!--部门及人员二层-->
+                              <view class="userLi_two" a:if={{item.checkeds==1}}>
+                                <block a:for={{item.children}} a:for-item="item2" >
+                                  <view class="userLi_two">
+                                    <view class="{{item.checkeds==1?'OpenLi':'FoldLi'}}" data-item="{{item}}" catchTap="tapfirst">
+                              
+                                    </view>
+                                    <image  src="{{item.typeId==1?'../../../../images/compay_icon.png':'../../../../images/dept_icon.png'}}" class="floatright showimage"  />
+                                    <view style="float:left;padding-left:5px;width:{{userList.rightwidth}}">
+                                        {{item.Name}}
+                                    </view>
+                                  </view>
+                                  <!--部门及人员三层-->
+                                  <view class="userLi_two" a:if={{item.checkeds==1}}>
+                                    <block a:for={{item.children}}  a:for-item="item2">
+                                      <view class="userLi_two">
+                                        <view class="{{item.checkeds==1?'OpenLi':'FoldLi'}}" data-item="{{item}}" catchTap="tapfirst">
+                                  
+                                        </view>
+                                        <image  src="{{item.typeId==1?'../../../../images/compay_icon.png':'../../../../images/dept_icon.png'}}" class="floatright showimage"  />
+                                        <view style="float:left;padding-left:5px;width:{{userList.rightwidth}}">
+                                            {{item.Name}}
+                                        </view>
+                                      </view>
+                                      <!--部门及人员四层-->
+                                      <view class="userLi_two" a:if={{item.checkeds==1}}>
+                                        <block a:for={{item.children}} a:for-item="item3" >
+                                          <view class="userLi_two">
+                                            <view class="{{item.checkeds==1?'OpenLi':'FoldLi'}}" data-item="{{item}}" catchTap="tapfirst">
+                                      
+                                            </view>
+                                            <image  src="{{item.typeId==1?'../../../../images/compay_icon.png':'../../../../images/dept_icon.png'}}" class="floatright showimage"  />
+                                            <view style="float:left;padding-left:5px;width:{{userList.rightwidth}}">
+                                                {{item.Name}}
+                                            </view>
+                                          </view>
+                                          <block a:for={{item.presonList}}>
+                                            <view class="userLi_two" a:if={{item.deptId==item3.id}}>
+                                              <view class="{{item.checkeds==1?'inputradiocheck':'inputradio'}}" data-item="{{item}}" catchTap="tapuser">
+                                        
+                                              </view>
+                                              <image  src="{{item.icon!=''&&(icon.indexOf('http://')>-1||icon.indexOf('https://')>-1)?item.icon:'../../../../images/watch2.png'}}" class="floatright showimage"  />
+                                              <view style="float:left;padding-left:5px;width:{{userList.rightwidth}}">
+                                                  {{item.fullName}}
+                                              </view>
+                                            </view>
+                                          </block>
+                                        </block>
+                                      </view>
+                                      <block a:for={{item.presonList}}>
+                                        <view class="userLi_two" a:if={{item.deptId==item2.id}}>
+                                          <view class="{{item.checkeds==1?'inputradiocheck':'inputradio'}}" data-item="{{item}}" catchTap="tapuser">
+                                    
+                                          </view>
+                                          <image  src="{{item.icon!=''&&(icon.indexOf('http://')>-1||icon.indexOf('https://')>-1)?item.icon:'../../../../images/watch2.png'}}" class="floatright showimage"  />
+                                          <view style="float:left;padding-left:5px;width:{{userList.rightwidth}}">
+                                              {{item.fullName}}
+                                          </view>
+                                        </view>
+                                      </block>
+                                    </block>
+                                  </view>
+                                  <block a:for={{item.presonList}}>
+                                    <view class="userLi_two" a:if={{item.deptId==item1.id}}>
+                                      <view class="{{item.checkeds==1?'inputradiocheck':'inputradio'}}" data-item="{{item}}" catchTap="tapuser">
+                                
+                                      </view>
+                                      <image  src="{{item.icon!=''&&(icon.indexOf('http://')>-1||icon.indexOf('https://')>-1)?item.icon:'../../../../images/watch2.png'}}" class="floatright showimage"  />
+                                      <view style="float:left;padding-left:5px;width:{{userList.rightwidth}}">
+                                          {{item.fullName}}
+                                      </view>
+                                    </view>
+                                  </block>
+                                </block>
+                              </view>
+                              <block a:for={{item.presonList}}>
+                                <view class="userLi_two"> 
+                                  <view class="{{item.checkeds==1?'inputradiocheck':'inputradio'}}" data-item="{{item}}" catchTap="tapuser">
+                            
+                                  </view>
+                                  <image  src="{{item.icon!=''&&(icon.indexOf('http://')>-1||icon.indexOf('https://')>-1)?item.icon:'../../../../images/watch2.png'}}" class="floatright showimage"  />
+                                  <view style="float:left;padding-left:5px;width:{{userList.rightwidth}}">
+                                      {{item.fullName}}
+                                  </view>
+                                </view>
+                              </block>
+                            </block>
+                          </view>
+                    </block>
+                     
+                  </view>
+                <!-- <template is="userInfo" data="{{...userList}}" ></template> -->
+                <view class="userLi_two" a:if={{item.checkeds==1}}>
+                  <block a:for={{item.presonList}}>
+                    <view class="userLi_two">
+                      <view class="{{item.checkeds==1?'inputradiocheck':'inputradio'}}" data-item="{{item}}" catchTap="tapuser">
+                
+                      </view>
+                      <image  src="{{item.icon!=''&&(icon.indexOf('http://')>-1||icon.indexOf('https://')>-1)?item.icon:'../../../../images/watch2.png'}}" class="floatright showimage"  />
+                      <view style="float:left;padding-left:5px;width:{{userList.rightwidth}}">
+                          {{item.fullName}}
+                      </view>
+                    </view>
+                  </block>
+                </view>
+            </block>
+            
+        </view>
+    </view>
+  </view>
+</view>

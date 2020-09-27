@@ -1,0 +1,84 @@
+<view>
+  <view class="page_nav">
+    <view class="page_nav_content">
+        <view class="page_nav_content_item {{myfollow.active==true?'item_active':''}}" onTap="selectmy"><text>我的跟进</text></view>
+        <view class="page_nav_content_item {{nextfollow.active==true?'item_active':''}}" onTap="selectnext"><text>拜访计划</text></view>
+        <view style="width:{{endwidth}}px" class="page_nav_content_item {{powerfollow.active==true?'item_active':''}}" onTap="selectpower" style="border:none"><text>有权查看</text></view>
+    </view>
+  </view>
+  <view class="page_content">
+    <view a:if="{{myfollow.active}}">
+        <view  style="position: relative;" >
+          <scroll-view style="height:{{scrollheight}}px"  scroll-y="{{true}}"	onScroll="myscroll"  >
+            <view a:if={{myfollow.data}} class="scrollList"  >
+                <block a:for={{myfollow.data}}>
+                    <view  data-id={{item.id}} class="followLi" onTap="{{myfollow.oncheck}}">
+                      <view style="overflow: hidden;">
+                          <label style="float:left"><text>{{item.custName}}</text></label>
+                          <label style="float:right"><text>{{item.linkWay}}</text></label>
+                      </view>
+                      <view style="overflow: hidden;" class="usernamecolor">
+                           <label style="float:left"><text>{{item.linkMan!=null&&item.linkMan!=''?item.linkMan:item.endLinkMan}}</text></label>
+                          <label style="float:right"><text>{{item.createDate}}</text></label>
+                      </view>
+                    </view>
+                </block>
+            </view>
+            <view class="list-bottom-msg">{{myfollow.loadtext}}</view>
+          </scroll-view>
+        </view>
+        <view style="position:absolute;bottom:100px;right:20px;width:40px;height:60px">
+            <view onTap="myrefreshre"><image style="width:30px;height:28px" class="imagesbtn" src="../../../images/reject.png" /></view>
+            <navigator url="addfollow/addfollow" hover-class="navigator-hover"><image style="width:30px;height:28px" src="../../../images/count-plus.png" class="imagesbtn" /></navigator>
+        </view>
+    </view>
+    <view a:if="{{nextfollow.active}}">
+        <view  style="position: relative;" >
+          <scroll-view style="height:{{scrollheight}}px"  scroll-y="{{true}}"	onScroll="nextscroll"  >
+            <view a:if={{nextfollow.data}} class="scrollList" >
+                <block a:for={{nextfollow.data}}>
+                    <view  data-id={{item.id}} class="followLi" onTap="{{nextfollow.oncheck}}" >
+                      <view style="overflow: hidden;">
+                          <label style="float:left"><text>{{item.custName}}</text></label>
+                          <label style="float:right"><text>{{item.linkDate}}</text></label>
+                      </view>
+                      <view style="overflow: hidden;" class="usernamecolor">
+                           <label style="float:left"><text>{{item.content}}</text></label>
+                      </view>
+                    </view>
+                </block>
+            </view>
+            <view class="list-bottom-msg">{{nextfollow.loadtext}}</view>
+          </scroll-view>
+        </view>
+        <view style="position:absolute;bottom:100px;right:20px;width:40px;height:60px">
+            <view onTap="nextrefreshre"><image style="width:30px;height:28px" src="../../../images/reject.png" class="imagesbtn" /></view>
+        </view>    
+    </view>
+    <view a:if="{{powerfollow.active}}">
+        <view  style="position: relative;" >
+          <scroll-view style="height:{{scrollheight}}px"  scroll-y="{{true}}"	onScroll="powerscroll"  >
+            <view a:if={{powerfollow.data}} class="scrollList" >
+                <block a:for={{powerfollow.data}}>
+                    <view  data-id={{item.id}} class="followLi" onTap="{{powerfollow.oncheck}}">
+                      <view style="overflow: hidden;">
+                          <label style="float:left"><text>{{item.custName}}</text></label>
+                          <label style="float:right"><text>{{item.linkWay}}</text></label>
+                      </view>
+                      <view style="overflow: hidden;" class="usernamecolor">
+                           <label style="float:left"><text>{{item.linkMan}}</text></label>
+                          <label style="float:right"><text>{{item.createDate}}</text></label>
+                      </view>
+                    </view>
+                </block>
+            </view>
+            <view class="list-bottom-msg">{{powerfollow.loadtext}}</view>
+          </scroll-view>
+        </view>
+        <view style="position:absolute;bottom:100px;right:20px;width:40px;height:60px">
+            <view onTap="powerrefreshre"><image style="width:30px;height:28px" src="../../../images/reject.png" class="imagesbtn" /></view>
+        </view>
+    </view>
+  </view>
+  
+</view>

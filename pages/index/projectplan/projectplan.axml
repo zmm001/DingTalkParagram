@@ -1,0 +1,62 @@
+<view>
+  <view class="page_nav">
+    <view class="search">
+        <icon type="search"  size="14" style="position: absolute;left: 20px;top: 15px;"/>
+        <input type="text" onInput="searchchange" class="searchinput  " style="width:{{inputwidth}}px" placeholder="客户、联系人、业务员" onBlur="blurchange" onFocus="focuchange"/>
+        <button type="default" a:if={{searchmode.Issearchbtn}} onTap="search"  class="searchbtn" plain>搜索</button>
+    </view>
+    <view class="searchdiv">
+       <button type="ghost" hover-class="btncolor" class="input" size="mini" onTap="openbottom" data-value='followuser' >{{searchmode.followusername.length>0&&searchmode.followusername!='全部'?searchmode.followusername:'跟进人'}}</button>
+       <button type="ghost" hover-class="btncolor" class="input" size="mini" onTap="openbottom" data-value='state' >{{searchmode.followupstate.length>0?searchmode.followupstateName:'需要跟进'}}</button>
+       <button type="ghost" hover-class="btncolor" class="input" size="mini" onTap="openbottom" data-value='stateold' >{{searchmode.followupstateold.length>0?searchmode.followupstateoldname:'跟进逾期'}}</button>
+       <button type="ghost" hover-class="btncolor" class="input" size="mini" onTap="openbottom" data-value='foucs' >{{searchmode.isfoucs.length>0?(searchmode.isfoucs==0?"我的关注":"我未关注"):'我的关注'}}</button>
+    </view>
+  </view>
+  <view class="page_content">
+    <view>
+        <view  style="position: relative;" >
+          <scroll-view style="height:{{scrollheight}}px"  scroll-y="{{true}}"	onScroll="projectscroll"  >
+            <view a:if={{projectlist.data}} class="scrollList"  >
+                <block a:for={{projectlist.data}}>
+                    <view  data-id={{item.id}} class="followLi" onTap="{{projectlist.oncheck}}">
+                      <view style='overflow: hidden;'>
+                        <view style='float:left;overflow: hidden;width:{{inponewidth*0.5}}px;'>
+                            <view style='padding:3px 4px'>{{item.custName}}</view>
+                        </view>
+                        <view style='float:left;overflow: hidden;width:{{inponewidth*0.2}}px;'>
+                            <view style='padding:3px 4px;'>{{item.fullName}}</view>
+                        </view>
+                        <view style='float:left;overflow: hidden;width:{{inponewidth*0.3}}px;'>
+                          <view style='padding:3px 4px;'>{{item.linkDate}}</view>
+                        </view>
+                      </view>
+                      
+                      <view style='padding:3px 4px;color:#bbb'>{{item.content}}</view>
+                    </view>
+                </block>
+            </view>
+            <view class="list-bottom-msg">{{projectlist.loadtext}}</view>
+          </scroll-view>
+        </view>
+        <view style="position:absolute;bottom:100px;right:20px;width:40px;height:60px">
+            <view onTap="projectrefreshre"><image style="width:30px;height:28px" src="../../../images/reject.png" class="imagesbtn" /></view>
+            <navigator url="../follow/addfollow/addfollow?plan=true" hover-class="navigator-hover"><image style="width:30px;height:28px" src="../../../images/count-plus.png" class="imagesbtn"  /></navigator>
+        </view>
+  </view>
+</view>
+
+<block a:if="{{selectData.isShow}}">
+  <view class="city-picker-mask">
+    <view class="city-picker-inner section">
+        <view class="city-header page-section-demo ">
+              <button type="default" onTap="closebottom" class="city-cancel">取消</button>
+              <button type="primary" onTap="openbottom" class="city-true">确定</button>
+        </view>
+        <picker-view value="{{selectData.val}}" onChange="changeselect" class="citybody">
+          <picker-view-column>
+              <view class="picker-column-item" a:for="{{selectData.data}}" a:key="item">{{item.text}}</view>
+          </picker-view-column>
+        </picker-view>
+    </view>
+  </view>
+</block>

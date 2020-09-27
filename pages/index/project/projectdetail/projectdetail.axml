@@ -1,0 +1,179 @@
+<view class="page">
+  <view style="height:10px;width:100%"></view>
+  <view class="savelist">
+    <view class="saveul">
+        <view class="saveli">
+          <label class="savespan"><text >商机名称：</text></label>
+          <label class="select_label floatleft" >
+            <text class="select_label_text">
+            {{model.title}}
+            </text>
+          </label>
+        </view>
+        <view class="saveli">
+          <label class="savespan"><text >{{model.classId==2?"渠道名称：":"客户名称："}}</text></label>
+          <label class="select_label floatleft" >
+            <text class="select_label_text">
+            {{model.custName}}
+            </text>
+          </label>
+          <label class="select_label floatright" >
+            <text class="select_label_text">
+            {{model.linkWayName}}
+            </text>
+          </label>
+        </view>
+        <view class="saveli" a:if="{{model.endCustId.length>0}}" >
+          <label class="savespan"><text >渠道客户：</text></label>
+          <label class="select_label floatleft" >
+            <text class="select_label_text">
+            {{model.endCustName}}
+            </text>
+          </label>
+        </view>
+        <view class="saveli">
+          <label class="savespan"><text >联系人：</text></label>
+          <label class="select_label floatleft" >
+            <text class="select_label_text">
+            {{model.endLinkMan.length>0?model.endLinkMan:model.linkMan}}
+            </text>
+          </label>
+        </view>
+        <view class="saveli">
+          <label class="savespan" style="width:85px"><text >预计销售金额：</text></label>
+          <label class="select_label floatleft" >
+            <text class="select_label_text">
+            {{model.estimatePrice}}
+            </text>
+          </label>
+        </view>  
+        <view class="saveli">
+          <label class="savespan" style="width:85px"><text >预计成交时间：</text></label>
+          <label class="select_label floatleft" >
+            <text class="select_label_text">
+            {{model.estimateDate}}
+            </text>
+          </label>
+        </view>  
+        <view class="saveli">
+          <label class="savespan"><text >负责人：</text></label>
+          <label class="select_label floatleft" >
+            <text class="select_label_text">
+            {{model.fullName}}
+            </text>
+          </label>
+        </view>  
+        <view class="saveli">
+          <label class="savespan"><text >参与人：</text></label>
+          <label class="select_label floatleft" >
+            <text class="select_label_text">
+            {{model.partakeUser}}
+            </text>
+          </label>
+        </view> 
+        <view class="saveli" style="overflow:hidden">
+          <label class="savespan"><text >客户需求：</text></label>
+          <label class="select_label floatleft" style="width:{{width}}px" >
+            <text class="select_label_text">
+            {{model.requirement}}
+            </text>
+          </label>
+        </view>  
+        <view class="saveli" style="overflow: hidden;width: 100%;">
+          <label class="savespan"><text >商机状态：</text></label>
+          <label class="select_label floatleft" >
+            <text class="select_label_text">
+            {{model.projectStateName}}
+            </text>
+          </label>
+        </view>  
+        <view class="saveli">
+          <label class="savespan"><text >商机分类：</text></label>
+          <label class="select_label floatleft" >
+            <text class="select_label_text">
+            {{model.projectTypeName}}
+            </text>
+          </label>
+        </view>  
+        <view id="filediv" a:if="{{images.data}}" style="padding-left:15px;">
+             <block a:for={{images.data}}>
+                <label><image class="fileimage" data-url="{{item.url}}" src="{{item.url}}" onTap="{{images.showimage}}" /></label>
+             </block>
+          </view>
+        </view>
+        <view class="saveli" style="height:auto;overflow:hidden">
+          <label class="savespan"><text >备注：</text></label>
+          <label class="select_label floatleft" style='word-break: break-all;word-wrap: break-word;height:auto;width:{{width}}px' >
+            <text class="select_label_text">
+            {{model.remark}}
+            </text>
+          </label>
+        </view>  
+    </view>
+  </view>
+  <view style="height:10px;width:100%"></view>
+  <view class="savelist" style="padding-top:0px">
+    <view class="saveul">
+      <view class="saveli" onTap="selectproduct" style="color:#f4b964;font-size:16px;border:none;margin-left:0px;padding-left:15px;border-bottom:1px solid #ccc">
+      <label>产品明细</label>
+      </view>
+        <block a:for={{productlist.data}}>
+          <view class="saveli" style="color:#66CCCC;font-size:14px;border:none;height:auto;line-height:inherit;">
+          <view style="line-height: 20px;"><label><text>{{item.productName}}</text></label></view>
+          <view style="line-height: 20px;" a:if="{{item.productModel.length>0&&item.productModel!=null}}"><label><text>{{item.productModel}}</text></label></view>
+          <view style="line-height: 20px;" a:if="{{item.brandName.length>0&&item.brandName!=null}}"><label><text>{{item.brandName}}</text></label></view>
+          <view style="line-height: 20px;"><label><text>{{item.serviceLife}}</text>个月</label></view>
+          <view style="line-height: 20px;">
+            <label>
+              <text>{{item.singlePrice}}</text>
+              <text>元/</text>
+              <text>{{item.unit}}</text>
+              <text>*</text>
+              <text>{{item.productNum}}</text>
+              <text>{{item.unit}}</text>
+            </label>
+            <label style="float:right">
+              <text>小计:</text>
+              <text>{{item.minPrice}}</text>
+              <text style="padding-right:10[x">元</text>
+            </label>
+          </view>
+        </block>
+    </view>  
+  </view>  
+  <view style="height:10px;width:100%"></view>
+  <view class="savelist" style="padding-top:0px">
+    <view class="saveul">
+      <view class="saveli"  style="color:#f4b964;font-size:16px;border:none;margin-left:0px;border-bottom:1px solid #ccc;padding-left:15px;">
+      <label>跟进记录</label>
+      </view>
+        <block a:for={{followlist.data}}>
+          <view  class="saveli" data-id="{{item.id}}" onTap="{{followlist.oncheck}}" style="height:auto;border-bottom:1px solid #66CCCC;margin-left:0px;padding-left:15px">
+            <view>
+              <label class="savespan">
+                <image src="{{item.icon}}" style="width:40px;height:40px;border-radius: 50%;" />
+              </label>
+            </view>
+            <view style="padding-right:15px;">
+              <view style="height:20px;overflow:hidden;color:#66CCCC;padding: 2px 0px;">
+                <label class="select_label floatleft" >
+                  <text class="select_label_text" style="color:#30A5FF" >
+                  {{item.fullName}} 
+                  </text>
+                </label>
+              </view>
+              <view  style="overflow:hidden">
+                <label><text  class="commonttext"> {{item.content}}</text></label>
+              </view>
+            </view>
+        </view>
+        </block>
+      
+    </view>  
+  </view>  
+ <view style="height:20px;width:100%"></view>
+  <view style="position:absolute;bottom:100px;right:20px;width:40px;height:60px">
+    <navigator a:if="{{isEdit}}" url="../addproject/addproject?id={{projectid}}" hover-class="navigator-hover"><image style="width:30px;height:28px" src="../../../../images/edit.png" class="imagesbtn" /></navigator>  
+    <navigator url="../../follow/addfollow/addfollow?custId={{model.custId}}&custName={{model.custName}}&classId={{model.classId}}&endCustId={{model.endCustId}}&endCustName={{model.endCustName}}&linkMan={{model.linkMan}}&tel={{model.linkWay}}&endLinkMan={{model.endLinkMan}}&endTel={{model.endLinkWay}}&linkWay={{model.projectState}}&linkWayName={{model.projectStateName}}&projectId={{projectid}}&projectName={{model.title}}" hover-class="navigator-hover"><image style="width:30px;height:28px" src="../../../../images/count-plus.png" class="imagesbtn" /></navigator>
+  </view>
+</view>

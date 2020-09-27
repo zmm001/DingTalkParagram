@@ -1,0 +1,109 @@
+<view>
+  <view class="page_nav">
+    <view class="search">
+        <icon type="search"  size="14" style="position: absolute;left: 20px;top: 15px;"/>
+        <input type="text" onInput="searchchange" class="searchinput  " style="width:{{inputwidth}}px" placeholder="商机/客户名称、负责/参与/创建人" onBlur="blurchange" onFocus="focuchange"/>
+        <button type="default" a:if={{searchmode.Issearchbtn}} onTap="search"  class="searchbtn" plain>搜索</button>
+    </view>
+    <view class="searchdiv">
+       <button type="ghost" hover-class="btncolor" class="input" size="mini" onTap="openyq" style="margin-left:2%" >{{searchmode.estimateQuarterName.length>0&&searchmode.estimateQuarterName!="成交时间"?searchmode.estimateQuarterName:'成交时间'}}</button>
+       <button type="ghost" hover-class="btncolor" class="input" size="mini" onTap="openxs" >{{searchmode.projectStateName.length>0?searchmode.projectStateName:'销售阶段'}}</button>
+       <button type="ghost" hover-class="btncolor" class="input" size="mini" onTap="openDatePicker" >{{searchmode.createDate.length>0?searchmode.createDate:'创建时间'}}</button>
+       <button type="ghost" hover-class="btncolor" class="input" size="mini" onTap="openyy" >{{searchmode.saleUserName.length>0&&searchmode.saleUserName!='全部'?searchmode.saleUserName:'所属人'}}</button>
+    </view>
+  </view>
+  <view class="page_content">
+    <view>
+        <view  style="position: relative;" >
+          <scroll-view style="height:{{scrollheight}}px"  scroll-y="{{true}}"	onScroll="projectscroll"  >
+            <view a:if={{projectlist.data}} class="scrollList"  >
+                <block a:for={{projectlist.data}}>
+                    <view  data-id={{item.id}} class="followLi" onTap="{{projectlist.oncheck}}">
+                      <view style="overflow: hidden;">
+                          <label style="float:left"><text>{{item.custName}}</text></label>
+                          <label style="float:right"><text>{{item.projectState}}</text></label>
+                      </view>
+                      <view style="overflow: hidden;" class="usernamecolor">
+                           <label style="float:left"><text>{{item.projectname+"("+item.createUser+")"}}</text></label>
+                          <label style="float:right"><text>{{"￥"+item.estimatePrice+"元"}}</text></label>
+                      </view>
+                    </view>
+                </block>
+            </view>
+            <view class="list-bottom-msg">{{projectlist.loadtext}}</view>
+          </scroll-view>
+        </view>
+        <view style="position:absolute;bottom:100px;right:20px;width:40px;height:60px">
+            <view onTap="projectrefreshre"><image style="width:30px;height:28px" src="../../../images/reject.png" class="imagesbtn" /></view>
+            <navigator url="addproject/addproject" hover-class="navigator-hover"><image style="width:30px;height:28px" src="../../../images/count-plus.png" class="imagesbtn"  /></navigator>
+        </view>
+  </view>
+  <view id="nav">
+    <label class="labelcolor" style="width:45%;padding-left:10px;">商机数：<text class="labeltext">{{projectnumber}}</text></label>
+    <label class="labelcolor">金额数：<text class="labeltext">{{projectprice}}</text></label>
+  </view>
+</view>
+
+<block a:if="{{estimatedate.isShow||projectstate.isShow||preson.isShow||DatePicker.isShow}}">
+  <view class="city-picker-mask" a:if="{{estimatedate.isShow}}">
+    <view class="city-picker-inner section">
+        <view class="city-header page-section-demo ">
+              <button type="default" onTap="closeyq" class="city-cancel">取消</button>
+              <button type="primary" onTap="openyq" class="city-true">确定</button>
+        </view>
+        <picker-view value="{{estimatedate.val}}" onChange="estimatedateChange" class="citybody">
+          <picker-view-column>
+              <view class="picker-column-item" a:for="{{estimatedate.data}}" a:key="item">{{item.text}}</view>
+          </picker-view-column>
+        </picker-view>
+    </view>
+  </view>
+  <view class="city-picker-mask" a:if="{{projectstate.isShow}}">
+    <view class="city-picker-inner section">
+        <view class="city-header page-section-demo ">
+              <button type="default" onTap="closexs" class="city-cancel">取消</button>
+              <button type="primary" onTap="openxs" class="city-true">确定</button>
+        </view>
+        <picker-view value="{{projectstate.val}}" onChange="projectstateChange" class="citybody">
+          <picker-view-column>
+              <view class="picker-column-item" a:for="{{projectstate.data}}" a:key="item">{{item.text}}</view>
+          </picker-view-column>
+        </picker-view>
+    </view>
+  </view>
+  <view class="city-picker-mask" a:if="{{preson.isShow}}">
+    <view class="city-picker-inner section">
+        <view class="city-header page-section-demo ">
+              <button type="default" onTap="closeyy" class="city-cancel">取消</button>
+              <button type="primary" onTap="openyy" class="city-true">确定</button>
+        </view>
+        <picker-view value="{{preson.val}}" onChange="presonChange" class="citybody">
+          <picker-view-column>
+              <view class="picker-column-item" a:for="{{preson.data}}" a:key="item">{{item.text}}</view>
+          </picker-view-column>
+        </picker-view>
+    </view>
+  </view>
+  <view class="city-picker-mask" a:if="{{DatePicker.isShow}}">
+    <view class="city-picker-inner section">
+        <view class="city-header page-section-demo ">
+              <button type="default" onTap="closeDatePicker" class="city-cancel">取消</button>
+              <button type="primary" onTap="openDatePicker" class="city-true">确定</button>
+        </view>
+        <view class="city-header page-section-demo " style="height:20px;line-height:20px;text-align:center;color:#ccc" onTap="cleartime">
+        全部时间
+        </view>
+        <picker-view value="{{DatePicker.val}}" onChange="DatePickerChange" class="citybody">
+          <picker-view-column>
+              <view class="picker-column-item" a:for="{{DatePicker.year}}" a:key="item">{{item}}</view>
+          </picker-view-column>
+          <picker-view-column>
+             <view class="picker-column-item" a:for="{{DatePicker.month}}" a:key="item">{{item}}</view>
+          </picker-view-column>
+          <picker-view-column> 
+             <view class="picker-column-item" a:for="{{DatePicker.day}}" a:key="item">{{item}}</view>
+          </picker-view-column>
+        </picker-view>
+    </view>
+  </view>
+</block>

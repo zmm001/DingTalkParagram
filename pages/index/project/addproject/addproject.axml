@@ -1,0 +1,209 @@
+<view class="page">
+  <view style="height:10px;width:100%"></view>
+  <view class="savelist">
+    <view class="saveul">
+        <view class="saveli">
+          <label class="savespan"><text >商机名称</text></label>
+          <input type="text" placeholder="必填"  value="{{project.data.title}}" data-name="title" class="saveinput" onInput="getinputvalue"  />
+        </view>
+        <view class="saveli" onTap="openCustList">
+          <label class="savespan"><text >{{project.data.classId==2?"渠道名称":"客户名称"}}</text></label>
+          <label class="select_label floatright" >
+            <text class="select_label_text">
+            {{project.data.custName}}
+            </text>
+          <image  src="../../../../images/left.png" class="floatright img"  />
+          </label>
+        </view>
+        <view class="saveli" onTap="openendCustList" a:if="{{project.data.classId==2}}" >
+          <label class="savespan"><text >渠道客户</text></label>
+          <label class="select_label floatright" >
+            <text class="select_label_text">
+            {{project.data.endCustName}}
+            </text>
+          <image  src="../../../../images/left.png" class="floatright img"  />
+          </label>
+        </view>
+        <view class="saveli" onTap="openlinkList" a:if="{{project.data.endCustId==null||project.data.endCustId.length==0}}">
+          <label class="savespan"><text >联系人</text></label>
+          <label class="select_label floatright" >
+            <text class="select_label_text">
+            {{project.data.linkMan}}
+            </text>
+          <image  src="../../../../images/left.png" class="floatright img"  />
+          </label>
+        </view>
+        <view class="saveli"  onTap="openendlinkList" a:if="{{project.data.endCustId!=null&&project.data.endCustId.length>0}}" >
+          <label class="savespan"><text >联系人</text></label>
+          <label class="select_label floatright" >
+            <text class="select_label_text">
+            {{project.data.endLinkMan}}
+            </text>
+          <image  src="../../../../images/left.png" class="floatright img"  />
+          </label>
+        </view>
+        <view class="saveli" onTap="openmainUserLi"  >
+          <label class="savespan"><text >负责人</text></label>
+          <label class="select_label floatright" >
+            <text class="select_label_text">
+            {{project.data.fullName}}
+            </text>
+          <image  src="../../../../images/left.png" class="floatright img"  />
+          </label>
+        </view>
+         <view class="saveli"  style="border-bottom:none;"  onTap="partakeUserLi"  >
+          <label class="savespan"><text >参与人</text></label>
+          <label class="select_label floatright" >
+            <text class="select_label_text">
+            {{project.data.partakeUser}}
+            </text>
+          <image  src="../../../../images/left.png" class="floatright img"  />
+          </label>
+        </view>
+    </view>
+  </view>
+  <view style="height:10px;width:100%"></view>
+  <view class="savelist">
+    <view class="saveul">
+        <view class="saveli">
+          <label class="savespan" style="width:85px"><text >预计销售金额</text></label>
+          <input type="text" placeholder="必填"  value="{{project.data.estimatePrice}}" data-name="estimatePrice" class="saveinput" onInput="getinputvalue"  />
+        </view>
+        <view class="saveli" data-modelnode="project.data.estimateDate" onTap="selectfollowDate">
+          <label class="savespan" style="width:85px"><text >预计成交时间</text></label>
+          <label class="select_label floatright" >
+            <text class="select_label_text">
+            {{project.data.estimateDate}}
+            </text>
+          <image  src="../../../../images/left.png" class="floatright img"  />
+          </label>
+        </view>
+        <view class="saveli" onTap="openxs">
+          <label class="savespan"><text >商机状态</text></label>
+          <label class="select_label floatright" >
+            <text class="select_label_text">
+            {{project.data.projectStateName}}
+            </text>
+          <image  src="../../../../images/left.png" class="floatright img"  />
+          </label>
+        </view>
+        <view class="saveli" onTap="opentype">
+          <label class="savespan"><text >商机分类</text></label>
+          <label class="select_label floatright" >
+            <text class="select_label_text">
+            {{project.data.projectTypeName}}
+            </text>
+          <image  src="../../../../images/left.png" class="floatright img"  />
+          </label>
+        </view>
+        <view class="saveli" style="height:auto;overflow: hidden;border-bottom:none;">
+          <view class="savespan" style="float:none">
+            <text>客户需求</text>
+          </view>
+          <view>
+            <textarea data-name="requirement" maxlength="500"  style="font-size:12px;margin-top:10px;height:40px"   placeholder="必填" onInput="getinputvalue" value="{{project.data.requirement}}"  />
+          </view>
+        </view>
+    </view>
+  </view>
+  <view style="width:100%;height:10px"></view>
+    <view class="savelist" style="padding-top:0px">
+      <view class="saveul">
+        <view class="saveli" onTap="selectproduct" style="color:#f4b964;font-size:16px;border:none;margin-left:0px;padding-left:15px;border-bottom:1px solid #ccc">
+        <label>产品明细</label>
+        <label style="float:right;font-size: 24px;padding-right: 20px;line-height: 28px;font-weight: bold;">+</label>
+        </view>
+      <block a:for={{productlist.data}}>
+        <view class="saveli" 
+              data-id="{{item.id}}"
+              data-productId="{{item.productId}}"
+              data-unit="{{item.unit}}"
+              data-price="{{item.singlePrice}}"
+              data-issn="{{item.issn}}"
+              data-brandName="{{item.brandName}}"
+              data-serviceLife="{{item.serviceLife}}"
+              data-productName="{{item.productName}}"
+              data-productModel="{{item.productModel}}"
+              data-productNum="{{item.productNum}}"
+              onTap="{{productlist.editchange}}"
+              onLongTap="{{productlist.delchange}}"
+              style="color:#66CCCC;font-size:14px;border:none;height:auto;line-height:inherit;border-bottom:1px solid #ccc">
+        <view style="line-height: 20px;"><label><text>{{item.productName}}</text></label></view>
+        <view style="line-height: 20px;" a:if="{{item.productModel.length>0&&item.productModel!=null}}"><label><text>{{item.productModel}}</text></label></view>
+        <view style="line-height: 20px;" a:if="{{item.brandName.length>0&&item.brandName!=null}}"><label><text>{{item.brandName}}</text></label></view>
+        <view style="line-height: 20px;"><label><text>{{item.serviceLife}}</text>个月</label></view>
+        <view style="line-height: 20px;">
+          <label>
+            <text>{{item.singlePrice}}</text>
+            <text>元/</text>
+            <text>{{item.unit}}</text>
+            <text>*</text>
+            <text>{{item.productNum}}</text>
+            <text>{{item.unit}}</text>
+          </label>
+          <label style="float:right">
+            <text>小计:</text>
+            <text>{{item.minPrice}}</text>
+            <text style="padding-right:10[x">元</text>
+          </label>
+        </view>
+      </block>
+      </view>
+    </view>
+    <view style="width:100%;height:10px"></view>
+      <view class="savelist">
+        <view class="saveul">
+        <view id="filediv" style="padding: 0px 5px;">
+          <label>
+            <image onTap="fileupload"  src="../../../../images/photos.png" class="floatright"  />
+          </label>
+          <block a:for={{images.data}}>
+            <label><image class="fileimage" data-url="{{item.url}}" src="{{item.url}}" onTap="{{images.showimage}}" onLongTap="{{images.delchange}}" /></label>
+          </block>
+        </view>
+      </view>
+    </view>
+  <view style="width:100%;height:10px"></view>
+  <view class="savelist">
+    <view class="saveul">
+          
+            <view class="saveli" style="height:auto;overflow: hidden;border-bottom:none;">
+            <view>
+              <textarea data-name="remark" maxlength="500"  style="font-size:12px;margin-top:10px;height:40px"   placeholder="备注" onInput="getinputvalue" value="{{project.data.remark}}"  />
+            </view>
+          </view>
+    </view>
+  </view>
+  <view style="width:100%;position: relative;margin: 20px 0px;">
+   <button form-type="submit" type="primary" style="margin:0px 15px;" onTap="submitsave" >保存</button>
+  </view>
+</view>
+
+<block a:if="{{projectstate.isShow||ProjectType.isShow}}">
+  <view class="city-picker-mask" a:if="{{projectstate.isShow}}">
+    <view class="city-picker-inner section">
+        <view class="city-header page-section-demo ">
+              <button type="default" onTap="closexs" class="city-cancel">取消</button>
+              <button type="primary" onTap="openxs" class="city-true">确定</button>
+        </view>
+        <picker-view value="{{projectstate.val}}" onChange="projectstateChange" class="citybody">
+          <picker-view-column>
+              <view class="picker-column-item" a:for="{{projectstate.data}}" a:key="item">{{item.text}}</view>
+          </picker-view-column>
+        </picker-view>
+    </view>
+  </view>
+  <view class="city-picker-mask" a:if="{{ProjectType.isShow}}">
+    <view class="city-picker-inner section">
+        <view class="city-header page-section-demo ">
+              <button type="default" onTap="closetype" class="city-cancel">取消</button>
+              <button type="primary" onTap="opentype" class="city-true">确定</button>
+        </view>
+        <picker-view value="{{ProjectType.val}}" onChange="ProjectTypeChange" class="citybody">
+          <picker-view-column>
+              <view class="picker-column-item" a:for="{{ProjectType.data}}" a:key="item">{{item.text}}</view>
+          </picker-view-column>
+        </picker-view>
+    </view>
+  </view>
+</block>

@@ -1,0 +1,52 @@
+@import '../../../CommonComponent/area/area.acss';
+.page{
+    background-color:#efeff4;
+    padding: 0px;
+}
+.savelist{
+    width:100%;
+    padding:10px 0px 0px 0px;
+    margin-top:10px;
+    background-color:#fff;
+}
+.saveul{
+    overflow: hidden;
+}
+.saveli{
+    padding: 3px 0px;
+    margin:  0px 0px 0px 15px;
+    height: 30px;
+    line-height: 30px;
+    border-bottom: 1px solid #ccc;
+}
+.savespan{
+    width:60px;
+    font-size: 14px;
+    padding-right: 10px;
+    height:20px;
+    color:#66CCCC;
+    margin-top:5px;
+    float: left;
+}
+.saveinput{
+    margin-top:5px;
+    float: left;
+    border: none;
+    font-size: 14px;
+    padding: 2.5px 6px;
+    height:15px;
+}
+.select_label{
+    font-size: 14px;
+    padding-right: 10px;
+    height:20px;
+    margin-top:5px;
+    width:auto;
+}
+.select_label_text{
+    padding-right: 10px;
+}
+.img{
+    margin-top: 4px;
+    margin-right: 0px;
+}

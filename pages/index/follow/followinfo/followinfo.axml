@@ -1,0 +1,188 @@
+<view class="page">
+  <view style="width:100%;height:10px"></view>
+  <view class="savelist">
+    <view class="saveul">
+        <view class="saveli">
+          <label class="savespan"><text >{{model.classId==2?"渠道名称":"客户名称"}}</text></label>
+          <label class="select_label floatleft" >
+            <text class="select_label_text">
+            {{model.custName}}
+            </text>
+          </label>
+          <label class="select_label floatright" >
+            <text class="select_label_text">
+            {{model.linkWayName}}
+            </text>
+          </label>
+        </view>
+        <view class="saveli" a:if="{{model.endCustId.length>0}}" >
+          <label class="savespan"><text >渠道客户</text></label>
+          <label class="select_label floatleft" >
+            <text class="select_label_text">
+            {{model.endCustName}}
+            </text>
+          </label>
+        </view>
+        <view class="saveli">
+          <label class="savespan"><text >联系人</text></label>
+          <label class="select_label floatleft" >
+            <text class="select_label_text">
+            {{model.endLinkMan.length>0?model.endLinkMan:model.linkMan}}
+            </text>
+          </label>
+          <label class="select_label floatright" >
+            <text data-tel="{{model.endTel!=null?model.endTel:model.tel}}" class="select_label_text" onTap="cellphone">
+              <image  src="../../../../images/telephone.png" class="floatright img"  />
+            </text>
+          </label>
+        </view>
+        <view class="saveli" a:if="{{!plan}}">
+          <label class="savespan"><text >跟进人</text></label>
+          <label class="select_label floatleft" >
+            <text class="select_label_text">
+            {{model.fullName}}
+            </text>
+          </label>
+        </view>
+        <view class="saveli" a:if="{{!plan}}">
+          <label class="savespan"><text >跟进时间</text></label>
+          <label class="select_label floatleft" >
+            <text class="select_label_text">
+            {{model.linkDate}}
+            </text>
+          </label>
+        </view>
+        <view class="saveli"  a:if="{{!plan}}">
+          <label class="savespan"><text >转为日报</text></label>
+          <label class="select_label floatleft" >
+            <text class="select_label_text">
+            {{model.isDiary==1?"是":"否"}}
+            </text>
+          </label>
+        </view>
+        <view class="saveli">
+          <label class="savespan"><text >添加时间</text></label>
+          <label class="select_label floatleft" >
+            <text class="select_label_text">
+            {{model.createDate}}
+            </text>
+          </label>
+        </view>
+        <view class="saveli" a:if="{{model.StateName.length>0&&!plan}}">
+          <label class="savespan"><text >商机状态</text></label>
+          <label class="select_label floatleft" >
+            <text class="select_label_text">
+            {{model.StateName}}
+            </text>
+          </label>
+        </view>
+        <view class="saveli" a:if="{{model.projectName!=null&&model.projectName.length>0&&!plan}}">
+          <label class="savespan"><text >关联商机</text></label>
+          <label class="select_label floatleft" >
+            <text class="select_label_text">
+            {{model.projectName}}
+            </text>
+          </label>
+        </view>
+        <view class="saveli" style="height:auto;overflow:hidden"  a:if="{{!plan}}">
+          <label class="savespan"><text >跟进记录</text></label>
+          <label class="select_label floatleft" style="width:{{autowidth}}px;height:auto" >
+            <text class="select_label_text">
+            {{model.content}}
+            </text>
+          </label>
+        </view>
+        <view class="saveli" style="overflow: hidden;width: 100%;" a:if="{{model.fplinkDate!=null&&model.fplinkDate.length>0}}">
+          <label class="savespan"><text >{{plan?'计划时间':'下次联系'}}</text></label>
+          <label class="select_label floatleft" >
+            <text class="select_label_text">
+            {{model.fplinkDate}}
+            </text>
+          </label>
+        </view>
+        <view class="saveli" style="height:auto;overflow:hidden" a:if="{{model.fplinkDate!=null&&model.fplinkDate.length>0}}">
+          <label class="savespan"><text >{{plan?'计划跟进':'下次跟进'}}</text></label>
+          <label class="select_label floatleft" style="width:{{autowidth}}px;height:auto" >
+            <text class="select_label_text">
+            {{model.fpcontent}}
+            </text>
+          </label>
+        </view>
+        <view class="saveli" style="overflow:hidden;height:auto" a:if="{{model.mobileAddress.length>0}}" onTap="openmap" >
+          <label class="savespan" style="width:auto">
+            <image src="../../../../images/loader.png" style="height:18px;width:15px" />
+          </label>
+          <label class="select_label floatleft" style="height:auto;width:{{autowidth}}px">
+            <text class="select_label_text" >
+            {{model.mobileAddress}}
+            </text>
+          </label>
+        </view>
+        <view id="filediv" a:if="{{images.data}}" style="padding-left:15px;">
+             <block a:for={{images.data}}>
+                <label><image class="fileimage" data-url="{{item.url}}" src="{{item.url}}" onTap="{{images.showimage}}" /></label>
+             </block>
+          </view>
+      </view>
+  </view>
+  <view style="width:100%;height:10px"></view>
+  <view class="savelist" style="margin-bottom:{{marginbottom}}px">
+    <view  class="saveul">
+       <view  class="saveli" style="border-bottom:1px solid #ccc;height:30px;line-height:30px;padding-right:15px;">
+        <label class="page-title floatleft" >
+          <text>评论</text>
+        </label>
+        <label class="floatright btnradis">
+          <text onTap="refreshCommentData">评论</text>
+        </label>
+      </view>
+    </view>
+    <view class="saveul">
+      <block a:for={{Comment.data}}>
+        <view  class="saveli" style="height:auto;border-bottom:1px solid #66CCCC;">
+            <view>
+              <label class="savespan">
+                <image src="{{item.icon}}" style="width:40px;height:40px;border-radius: 50%;" />
+              </label>
+            </view>
+          <view style="padding-right:15px;">
+            <view style="height:20px;overflow:hidden;color:#66CCCC;padding: 2px 0px;">
+              <label class="select_label floatleft" >
+                <text class="select_label_text" a:if="{{item.replyUserId.length==0}}" >
+                {{item.fullName+"回复:"}} 
+                </text>
+                <text class="select_label_text" a:if="{{item.replyUserId.length>0}}" >
+                {{item.fullName+"回复"+item.replyUserName+"："}}
+                </text>
+              </label>
+              <!-- a:if="{{userid!=item.userId&&item.replyUserId.length==0}}"  -->
+              <label class="select_label floatright">
+                <text data-placeholder="{{'回复'+item.fullName}}"
+                      data-replyIndex="{{item.curIndex}}"
+                      data-replyUserId="{{item.userId}}"
+                      data-replyUserName="{{item.fullName}}"
+                      data-replyCommentId="{{item.id}}"
+                class="select_label_text" style="text-decoration: underline;" onTap="setreplyCommentData" >
+                  回复
+                </text>
+              </label>
+            </view>
+            <view  style="overflow:hidden">
+              <label><text  class="commonttext"> {{item.content}}</text></label>
+            </view>
+          </view>
+        </view>
+      </block>
+      <view a:if="{{Comment.data.length==0}}" style="width:100%;height:80px;line-height:80px;color:#66CCCC;text-align:center;font-size:14px">
+        快来发表你的评论吧
+      </view>
+    </view>
+  </view>
+  <view class="postionbottom">
+     <input type="text" value="{{replyCommont.content}}" style="width:{{inputwidth}}px" placeholder="{{replyCommont.placeholder}}" data-name="content"   class="saveinput" onInput="getinputvalue"  />
+     <button id="sendmsg" type="default" size="mini" loading="{{loading}}" onTap="seedComment" > 发送 </button>
+    </view>
+  <view a:if="{{isEdit}}" style="position:fixed;top:150px;right:20px;width:40px;height:60px">
+        <navigator  url="../addfollow/addfollow?id={{followid}}&{{plan?'plan=true':''}}" hover-class="navigator-hover"><image style="width:30px;height:28px" src="../../../../images/edit.png" class="imagesbtn" /></navigator>
+  </view>
+</view>

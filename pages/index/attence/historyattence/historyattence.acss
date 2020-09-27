@@ -1,0 +1,12 @@
+@import '../../../CommonComponent/area/area.acss';
+.label{
+min-height: 35px;
+line-height: 35px;
+}
+.tabelli{
+  overflow: hidden;
+  min-height:35px;
+  line-height:35px;
+  background-color:white;
+  border-bottom:1px solid #ccc
+}

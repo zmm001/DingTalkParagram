@@ -1,0 +1,7 @@
+.imgges{
+  height:auto;
+line-height:0;
+width:auto;
+max-height:100%;
+max-width:100%;
+}

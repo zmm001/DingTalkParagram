@@ -1,0 +1,45 @@
+<view>
+  <view class="page_nav">
+     <view class="search">
+        <icon type="search"  size="14" style="position: absolute;left: 20px;top: 15px;"/>
+        <input type="text" onInput="searchchange" class="searchinput" style="width:{{inputwidth}}px" placeholder="输入客户名称" onFocus="focuchange" onBlur="blurchange"/>
+        <button type="default" a:if={{Issearchbtn}} onTap="search"  class="searchbtn" plain>搜索</button>
+      </view>
+      <view class="searchtitle">搜索结果</view>
+  </view>
+  <view class="page_content">
+    <view>
+        <view style="position: relative;" >
+          <scroll-view style="height:{{scrollheight}}px"  scroll-y="{{true}}"	onScroll="scroll"  >
+            <view a:if={{CustList.data}} class="scrollList"  >
+                <block a:for={{CustList.data}}>
+                    <view  data-custId="{{item.custId}}" 
+                           data-custName="{{item.custName}}"
+                           data-classId="{{item.classId}}" 
+                           data-provinceId="{{item.provinceId}}" 
+                           data-province="{{item.province}}" 
+                           data-cityId="{{item.cityId}}" 
+                           data-city="{{item.city}}" 
+                           data-countyId="{{item.countyId}}" 
+                           data-county="{{item.county}}" 
+                           data-address="{{item.address}}" 
+                           class="followLi" onTap="{{CustList.oncheck}}">
+                      <view style="overflow: hidden;">
+                          <label style="float:left"><text>{{item.custName}}</text></label>
+                      </view>
+                      <view style="overflow: hidden;" class="usernamecolor">
+                           <label style="float:left"><text>{{item.ownUser}}</text></label>
+                          <label style="float:right"><text>{{item.updateDatestring}}</text></label>
+                      </view>
+                    </view>
+                </block>
+            </view>
+            <view class="list-bottom-msg">{{CustList.loadtext}}</view>
+          </scroll-view>
+        </view>
+        <view style="position:absolute;bottom:100px;right:20px;width:40px;height:60px">
+            <view onTap="refreshre"><image style="width:30px;height:28px" src="../../../../images/reject.png" /></view>
+        </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,57 @@
+<view class="page">
+  <view style="height:10px;width:100%"></view>
+  <view class="savelist">
+    <view class="saveul">
+        <view class="saveli" onTap="openProductList">
+          <label class="savespan"><text >产品名称</text></label>
+          <label class="select_label floatright" >
+            <text class="select_label_text">
+            {{model.productName}}
+            </text>
+          <image  src="../../../../images/left.png" class="floatright img"  />
+          </label>
+        </view>
+        <view class="saveli">
+          <label class="savespan"><text >产品型号</text></label>
+          <label class="select_label floatright" >
+            <text class="select_label_text">
+            {{model.productModel}}
+            </text>
+          </label>
+        </view>
+        <view class="saveli">
+          <label class="savespan"><text style="margin-right:2em">品</text><text>牌</text></label>
+          <label class="select_label floatright" >
+            <text class="select_label_text">
+            {{model.productModel}}
+            </text>
+          </label>
+        </view>
+        <view class="saveli">
+          <label class="savespan"><text >服务期限</text></label>
+          <label class="select_label floatright" >
+            <input style="float:left" type="text"  value="{{model.serviceLife}}" data-name="serviceLife" class="saveinput" onInput="getinputvalue"  />
+            <text class="select_label_text" style="flaot:right;color:#66CCCC">
+              个月
+            </text>
+          </label>
+        </view>
+        <view class="saveli">
+          <label class="savespan"><text style="margin-right:2em">单</text><text>价</text></label>
+          <label class="select_label" >
+                <input  type="text"  value="{{model.price}}" data-name="price" class="saveinput" onInput="getinputvalue"  />
+          </label>
+        </view>
+        <view class="saveli" style="border-bottom:none">
+          <label class="savespan"><text style="margin-right:2em">数</text><text>量</text></label>
+          <label class="select_label" >
+                <input  type="text"  value="{{model.productNum}}" data-name="productNum" class="saveinput" onInput="getinputvalue"  />
+          </label>
+        </view>
+    </view>
+  </view>
+   <view style="width:100%;position: relative;margin: 20px 0px;">
+   <button form-type="submit" type="primary" style="margin:0px 15px;" onTap="submitsave" >保存</button>
+  </view>
+</view>
+  

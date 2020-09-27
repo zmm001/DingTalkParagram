@@ -1,0 +1,16 @@
+<view class="viewconten">
+  <view class="viewli"><label>当前时间：<text>{{nowtime}}</text></label></view>
+  <view class="viewli"><label><text style="float:left;color:rgb(102, 204, 204)">当前位置：</text><text style="text-overflow:ellipsis;float:left;display:block;width:{{nowaddresswidth}}px">{{address}}</text></label></view>
+  <view><label style="color:#66cccc">打卡备注</label>
+    <textarea placeholder-class="textareastyle" placeholder="如有异常请填写备注信息,不超过100字" maxlength="100" value="{{remark}}" data-name="remark" onInput="getinputvalue" />
+  </view>
+</view>
+<view style="height:50px">
+<button type="default" onTap="OnAttend" style="width:40%;margin-left:5%;background-color: #66cccc;color:white;float:left;height:30px;line-height:30px;font-size: 14px;">上班打卡</button>
+<button type="default" onTap="OffAttend" style="width:40%;margin-left:10%;background-color: #66cccc;color:white;float:left;height:30px;line-height:30px;font-size: 14px;">下班打卡</button>
+</view>
+<view class="fixedbottom" >
+  <view style="padding:3px 8px;overflow:hidden" a:if="{{todayAttend.onTime!=null}}" ><label><text style="color:#ffbf3a;float:left">上班：</text><text style="display:block;width:{{addresswidth}}px;float:left;">{{todayAttend.onTime+" "+todayAttend.onAddress}}</text></label></view>
+  <view style="padding:3px 8px;overflow:hidden;border-bottom:1px solid #ccc" a:if="{{todayAttend.offTime!=null}}"><label><text style="color:#ffbf3a;;float:left">下班：</text><text style="display:block;width:{{addresswidth}}px;float:left;">{{todayAttend.offTime+" "+todayAttend.offAddress}}</text></label></view>
+  <view class="historybox" onTap="historylist" >查看记录</view>
+</view>

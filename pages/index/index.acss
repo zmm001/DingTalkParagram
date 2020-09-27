@@ -1,0 +1,323 @@
+@import '../CommonComponent/grid/grid.acss';
+.navbottom {
+  position: fixed;
+  bottom: 0px;
+  height: 54px;
+  line-height: 50px;
+  overflow: hidden;
+  width: 100%;
+  background-color: white;
+}
+
+.navbottom .navitem {
+  float: left;
+  width: 50%;
+  display: block;
+  height: 50px;
+  line-height: 25px;
+  text-align: center;
+  padding-top: 4px;
+}
+
+.icon_apply {
+  margin: 0px auto;
+  width: 25px;
+  height: 25px;
+  background: url(../images/icon_apply.png) no-repeat;
+  background-size: cover;
+}
+
+.on .icon_apply {
+  margin: 0px auto;
+  width: 25px;
+  height: 25px;
+  background: url(../images/icon_apply2.png) no-repeat;
+  background-size: cover;
+}
+
+.icon_my {
+  margin: 0px auto;
+  width: 25px;
+  height: 25px;
+  background: url(../images/icon_my.png) no-repeat;
+  background-size: cover;
+}
+
+.on .icon_my {
+  margin: 0px auto;
+  width: 25px;
+  height: 25px;
+  background: url(../images/icon_my2.png) no-repeat;
+  background-size: cover;
+}
+
+.text_apply {
+  color: #929292;
+}
+
+.on .text_apply {
+  color: #66CCCC;
+}
+
+  /*.userInfos {
+ margin-top: 10px;
+  border: 1px solid red; */
+  /* background:#fff;
+  text-align:center;
+  padding: 10px;
+  border-top:0.5px solid #ccc;
+  border-bottom:0.5px solid #ccc; 
+}*/
+
+.iconimg {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid ccc;
+}
+
+.loginout {
+  margin: 0px auto;
+  margin-top: 30px;
+  height: 40px;
+  line-height: 40px;
+  width: 80%;
+  text-align: center;
+  border-radius: 5px;
+  color: white;
+  background: #ff7f7f
+}
+
+view {
+  box-sizing: border-box;
+}
+
+.item-box {
+  width: 700rpx;
+  margin: 0 auto;
+}
+
+.items {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.item {
+  position: relative;
+  /* border-top: 2rpx solid #eee; */
+  height: 100rpx;
+  line-height: 100rpx;
+  overflow: hidden;
+  border-bottom: 1px solid #E6E6E6;
+}
+
+.item:last-child {
+  border-bottom: 2rpx solid #eee;
+}
+
+.inner {
+  position: absolute;
+  top: 0;
+}
+
+.inner.txt {
+  background-color: #fff;
+  width: 100%;
+  z-index: 5;
+  padding: 0 10rpx;
+  transition: left 0.2s ease-in-out;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.inner.del {
+  background-color: #e64340;
+  width: 180rpx;
+  text-align: center;
+  z-index: 4;
+  right: 0;
+  color: #fff;
+}
+
+.item-icon {
+  width: 60rpx;
+  height: 60rpx;
+  vertical-align: middle;
+  margin-right: 16rpx;
+  margin-left: 6px;
+  border-radius: 50%;
+}
+
+.item-icons {
+  width: 30rpx;
+  height: 30rpx;
+  vertical-align: middle;
+  margin-left: 6px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.text-aglin-right{
+  text-align: right;
+}
+
+.item-data {
+  /* margin-left: 15%; */
+  width: 53%;
+}
+
+/* .img {
+  width: 60rpx;
+  height: 60rpx;
+  margin-top: 18rpx;
+}
+
+.index-contier {
+  color: #fff;
+  font-size: 12px;
+  width: 100%;
+  height: 570rpx;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url("图片路径");
+}
+
+.index-left {
+  float: left;
+  width: 30%;
+  text-align: center;
+  margin-top: 477rpx;
+  color: #000;
+}
+
+.index-center {
+  float: left;
+  width: 40%;
+  text-align: center;
+  margin-top: 240rpx;
+  color: #000;
+}
+
+.logo {
+  margin: 0 auto;
+  width: 80px;
+  height: 80px;
+  border-radius: 40px;
+}
+
+.index-right {
+  float: left;
+  width: 30%;
+  text-align: center;
+  margin-top: 477rpx;
+  color: #000;
+}
+
+.index-right image {
+  height: 100%;
+  width: 100%;
+}
+
+.inform {
+  padding: 0 6px;
+  font-size: 30rpx;
+}
+*/
+/* #userinfo1 {
+  width: 185rpx;
+  height: 185rpx;
+  border-radius: 50%;
+  display: flex;
+  overflow: hidden;
+  text-align: center;
+} */
+
+/* #userinfo2 {
+  font-family: "微软雅黑";
+  font-size: 15px;
+  margin-top: 75rpx;
+  color: #ffffff;
+}  */
+
+.left-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #000000;
+  width: 30%;
+}
+.right-label {
+  font-size: 14px;
+  font-weight: 400;
+  color: #000000;
+  width: 100%;
+  text-align: right;
+}
+.userinfo{
+		height: 100px;
+		background: rgba(255,255,255,1);
+    margin-bottom: 10px;
+    background-color:#fff
+	}
+	.newInfo {
+		position: relative;
+		box-sizing: border-box;
+		padding: 8px 16px;
+		color: #323233;
+		font-size: 12px;
+		background-color: #fff;
+		margin-top: 10px;
+	}
+	.newInfo .imgPanl {
+		display: flex;
+  }
+  .imgPanl .label1{
+    position:relative;
+-webkit-box-flex:0;
+flex:0 0 auto;
+width:70px;
+height:70px;
+margin-right:8px;
+  }
+
+  .aaa{
+    width:100%;
+height:100%;
+position:relative;
+  }
+.linkmanDiv{
+  width:100%;
+height:100%;
+position:relative;
+border-radius:50%;
+object-fit:cover;
+background-color:rgb(41, 204, 204);
+}
+.label2{
+  font-size:15px;
+text-align:-webkit-center;
+color:white;
+font-weight:500;
+width:70px;
+line-height:70px;
+}
+.imgLabel{
+  position: relative;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-flex: 1;
+    flex: 1;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    min-width: 0;
+    min-height: 70px;
+    line-height: 35px;
+}
+.imgLabel .username{
+font-size: 18px;font-weight: 500;
+}
+.imgLabel .company{
+  float: left;
+}

@@ -1,0 +1,277 @@
+*{
+    background-color:transparent;
+    font-family: "微软雅黑";
+}
+page{
+   background-color:#efeff4;
+}
+.page {
+  font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
+  font-size: 24rpx;
+  padding: 32rpx;
+  flex: 1;
+}
+
+.page-description {
+  margin-bottom: 32rpx;
+}
+
+.page-section {
+  background: #fff;
+  margin-bottom: 32rpx;
+}
+
+.page-section-title {
+  padding: 16rpx 32rpx;
+}
+
+.page-section-demo {
+  padding: 32rpx;
+}
+
+.page-section-btns {
+  border-top: 1px solid #ddd;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.page-section-btns > view {
+  flex: 1;
+  height: 84rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color: #49a9ee;
+}
+.page-section-btns > view + view {
+  border-left: 1px solid #ddd;
+}
+
+button {
+  margin-top:20rpx;
+  margin-bottom:20rpx;
+}
+
+.bc_blue {
+  background-color: #49A9EE;
+}
+
+.bc_red {
+  background-color: #F04134;
+}
+
+.bc_yellow {
+  background-color: #FFBF00;
+}
+
+.bc_green {
+  background-color: #00A854;
+}
+
+.form-row {
+  display: flex;
+  align-items: center;
+  padding: 0 30rpx;
+  height: 88rpx;
+  align-items: center;
+}
+
+.form-row-label {
+  width: 180rpx;
+  font-size: 34rpx;
+  margin-right: 10rpx;
+  text-align: left;
+  color: #000;
+}
+
+.form-row-content {
+  flex: 1;
+  font-size: 34rpx;
+}
+
+.form-line {
+  height: 1px;
+  background-color: #ddd;
+  margin-left: 30rpx;
+}
+.detailtext{
+  font-size: 12px;
+  color: #999;
+  width:60px;
+}
+.detailtextcontent{
+  font-size: 12px;
+  color: #4C4C4C;
+  padding-left:15px;
+}
+.detailLi{
+  padding: 6px 15px;
+  position: relative;
+  overflow: hidden;
+}
+/*跟进滚动状态样式*/
+.list-item{
+  overflow: hidden;
+}
+.datecontent{
+  width: 28%;
+  height: 81px;
+  overflow: hidden;
+  background-color: #fff;
+  float: left;
+}
+.follow-content{
+    width: 71%;
+    height: 81px;
+    overflow: hidden;
+    border-left: 1px solid #ccc;
+    background-color: #fff;
+}
+.nullcontent{
+    width: 100%;
+    height: 15px;
+    background-color: #f5f5f5;
+}
+.datecontent-mes{
+    width: 51px;
+    height: 19px;
+    background: url(../../../../images/V-date.png) no-repeat;
+    background-size: cover;
+    font-size: 14px;
+    text-align: center;
+    margin: 15px 18px;
+    line-height: 19px;
+}
+.followcontent-icon{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 26.5%;
+}
+.follow-mes {
+    padding-left: 25px;
+    padding-top: 15px;
+}
+.follow-mesL {
+    width: 30%;
+    float: left;
+    font-size: 14px;
+    color: #4C4C4C;
+}
+.follow-mesR
+{
+    width: 70%;
+    float: left;
+    font-size: 12px;
+    color: #999;
+}
+.mui-ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.mui-ellipsis-2{
+  display: -webkit-box;
+    overflow: hidden;
+    white-space: normal!important;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.img {
+    width: 10px;
+    height: 15px;
+    vertical-align: middle;
+    padding-top: 3px;
+}
+.floatleft{
+    float:left
+}
+.floatright{
+    float:right
+}
+.fileimage{
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.searchinput{
+  border: 1px solid #ccc!important;   
+  border-radius: 7px!important;   
+  height: 30px!important;   
+  line-height: 30px!important;   
+  margin: 0px!important;   
+  padding: 3px 0px!important;   
+  text-align: left!important;   
+  padding-left: 30px!important;   
+  font-size:12px !important;
+}
+.search{
+  background-color: white;
+  height: 40px;
+  padding: 2px 5px;
+  /* text-align: center; */
+}
+.searchbtn{
+  font-size: 12px;
+  height: 36px !important;
+  float: right;
+  line-height: 32px !important;
+  position: absolute;
+  right: 10px;
+  top: -6px;
+  padding: 3px 10px;
+  border:1px solid #ccc !important;
+  color:#ccc;
+}
+.searchtitle{
+    width: 100%;
+    height: 20px;
+    line-height: 20px;
+    color: #66CCCC;
+    text-indent: 2em;
+}
+.input{
+  background-color: rgb(102, 204, 204) !important;
+}
+.usernamecolor{
+  color:rgb(153, 153, 153) !important;
+}
+.imagesbtn{
+  background-color: #6cc;
+  border-radius: 50%;
+}
+
+.viewconten{
+  padding: 0px 15px;
+  background-color: white;
+}
+.viewli{
+  min-height:35px;
+  line-height: 35px;
+  border-bottom:1px solid #ccc;
+}
+.viewli label{
+  color: #66cccc;
+}
+.viewli text{
+  color:black;
+}
+.textareastyle {
+  /* placeholder颜色  */
+  color: #808080;
+  /* placeholder字体大小  */
+  font-size: 12px;
+} 
+textarea{
+  color: #808080;
+  font-size: 12px;
+}
+.fixedbottom{
+    background-color: white;
+    bottom: 0px;
+    position: fixed;
+    width: 100%;
+}

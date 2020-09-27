@@ -1,0 +1,8 @@
+<view style="display:inline-block;overflow:hidden">
+<view style="width:80%;margin:10% auto 0;">
+  <image class="imgges" mode="widthFix" src="../../../images/background.png"></image>
+</view>
+<view style="width:40%;margin:50% auto 0;">
+  <image class="imgges" mode="widthFix" src="../../../images/bk-logo.png"></image>
+</view>
+</view>

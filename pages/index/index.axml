@@ -1,0 +1,109 @@
+<import src="../CommonComponent/grid/grid.axml" />
+<view a:if={{check=='apply'}} style="margin-top:10px;">
+  <template is="grid" data={{...arr}} />
+</view>
+<view style='width:100%;'></view>
+<view a:if={{check=='my'}}>
+  <view class='items' >
+    <view class="userinfo">
+      <view class="newInfo">
+        <view class="imgPanl">
+          <label class="label1">
+            <view class="aaa">
+              <view class="linkmanDiv">
+                <label class="label2">{{fullName.slice(fullName.length-2)}}</label></view>
+            </view>
+          </label>
+          <view class="imgLabel">
+            <view class="username">{{fullName}}</view>
+            <view>
+              <view>
+                <view class="company">{{firmName}}</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='items' >
+    <view class="item">
+      <view class="inner txt">
+        <image class="item-icon" mode="widthFix" src="../../images/userinfo/phone.png"></image>
+        <label class="left-label">手机号码</label>
+        <label class="item-data">
+          <label class="right-label"> {{phoneNum}}</label>
+        </label>
+      </view>
+    </view>
+    <view class="item">
+      <view class="inner txt">
+        <image class="item-icon" mode="widthFix" src="../../images/userinfo/tel.png"></image>
+        <label class="left-label">电话</label>
+        <label class="item-data">
+          <label class="right-label"></label>
+        </label>
+      </view>
+    </view>
+    <view class="item">
+      <view class="inner txt">
+        <image class="item-icon" mode="widthFix" src="../../images/userinfo/qq.png"></image>
+        <label class="left-label">QQ</label>
+        <label class="item-data">
+          <label class="right-label"></label>
+        </label>
+      </view>
+    </view>
+    <view class="item">
+      <view class="inner txt">
+        <image class="item-icon" mode="widthFix" src="../../images/userinfo/email.png"></image>
+        <label class="left-label">邮箱</label>
+        <label class="item-data">
+          <label class="right-label"></label>
+        </label>
+      </view>
+    </view>
+    <view class='items' >
+      <view class="item" onTap="onToHelp">
+        <view class="inner txt">
+          <image class="item-icon" mode="widthFix" src="../../images/userinfo/help.png"></image>
+          <label class="left-label">帮助中心</label>
+          <label class="item-data text-aglin-right">
+          <image class="item-icons" mode="widthFix" src="../../images/userinfo/arrow.png"></image>
+        </label>
+        </view>
+      </view>
+      <view class="item" onTap="onToSys">
+        <view class="inner txt">
+          <image class="item-icon" mode="widthFix" src="../../images/userinfo/web.png"></image>
+          <label class="left-label">管理后台</label>
+          <view style="float: right;margin-right:15px;">
+            <image class="item-icons" mode="widthFix" src="../../images/userinfo/arrow.png"></image>
+          </view>
+        </view>
+      </view>
+      <!-- <view class="item" onTap="onbtnout">
+        <view class="inner txt">
+          <image class="item-icon" mode="widthFix" src="../../images/userinfo/bind.png"></image>
+          <label class="left-label">解除绑定</label>
+          <view style="float: right;margin-right:15px;">
+            <image class="item-icons" mode="widthFix" src="../../images/userinfo/arrow.png"></image>
+          </view>
+        </view>
+      </view> -->
+    </view>
+    <!--<view>{{fullName}}</view> -->
+  </view>
+  <!--<view class='loginout' onTap="onbtnout">
+    退出登录</view> -->
+</view>
+<view class='navbottom'>
+  <view class="navitem {{check=='apply'?'on':''}}" data-value='apply' onTap="onNavbottom">
+    <view class="icon_apply"></view>
+    <view class="text_apply">应用</view>
+  </view>
+  <view class="navitem {{check=='my'?'on':''}}" data-value='my' onTap="onNavbottom">
+    <view class="icon_my"></view>
+    <view class="text_apply">我的</view>
+  </view>
+</view>

@@ -1,0 +1,28 @@
+<import src="../userInfo/userInfo.axml" />
+<template name="userInfo">
+    <view a:if={{data.checkeds==1}}>
+        <block a:for={{data.children}}>
+          <view >
+            <view class="{{item.checkeds==1?'OpenLi':'FoldLi'}}" data-item="{{item}}" catchTap="{{onItemTap}}">
+      
+            </view>
+            <image  src="{{item.typeId==1?'../../../../images/compay_icon.png':'../../../../images/dept_icon.png'}}" class="floatright showimage"  />
+            <view style="float:left;padding-left:5px;width:{{rightwidth}}">
+                {{item.Name}}
+            </view>
+          </view>
+          <template is="userInfo" data="{{...item.children}}" ></template>
+        </block>
+    
+        <block a:for={{data.presonList}}>
+          <view class="userLi_two">
+            <view class="{{item.checkeds==1?'inputradiocheck':'inputradio'}}" data-item="{{item}}" catchTap="{{onItemTapCheck}}">
+            </view>
+            <image  src="{{item.icon!=''&&(icon.indexOf('http://')>-1||icon.indexOf('https://')>-1)?item.icon:'../../../../images/watch2.png'}}" class="floatright showimage"  />
+            <view style="float:left;padding-left:5px;width:{{rightwidth}}">
+                {{item.fullName}}
+            </view>
+          </view>
+        </block>
+    </view>
+</template>

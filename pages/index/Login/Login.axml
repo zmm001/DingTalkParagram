@@ -1,0 +1,14 @@
+<view style="background-color:white">
+  <view style="height:{{top}}px;width:100%">
+    <image src="../../../images/logo.png" mode="" style="width: 112.55px;height: 112.55px;background-size: cover;margin-top:{{imagetop}}px;margin-left:{{imageleft}}px" />
+  </view>
+  <view style="margin-right:{{left}}px;margin-left:{{left}}px;border-bottom:1px solid #ccc;overflow: hidden;">
+  <image class="imageicon" src="../../../images/user.png" mode="" />  <input  class="logininput" type="number" placeholder="请输入手机号码" maxlength="11" data-name="phoneNum" value="{{Login.phoneNum}}"  onInput="getinputvalue" />
+  </view>
+  <view style="margin-right:{{left}}px;margin-left:{{left}}px;border-bottom:1px solid #ccc;overflow: hidden;">
+  <image class="imagepass" src="../../../images/password.png" mode="" /><input class="logininput" type="text" placeholder="请输入密码" auto-focus password data-name="pwd"  onInput="getinputvalue" />
+  </view>
+  <view>
+    <button type="default" onTap="login" loading={{loadtype}} style="width:80%;margin-left:10%;margin-right:10%;background-color: #66cccc;color:white">登录</button>
+  </view>
+</view>

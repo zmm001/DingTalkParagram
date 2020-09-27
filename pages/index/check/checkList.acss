@@ -1,0 +1,45 @@
+@import '../../CommonComponent/list/index.acss';
+@import '../../CommonComponent/area/area.acss';
+
+.nav{
+  position: absolute;;
+  bottom:0px;
+  height:40px;
+  line-height:30px;
+  font-size:16px;
+  color:#FBAB4A;
+  width:100%;
+  background-color:white;
+  text-align:center;
+  padding:5px 0px;
+  box-shadow: 0 -1px 20px rgba(0, 0, 0, .1);
+  background-color:white;
+}
+.page{
+  margin-top:0px !important;
+  margin-bottom:0px !important;
+  padding:0px !important;
+}
+.btncolor{
+  color:rgb(102, 204, 204);
+}
+.page-section{
+  margin-bottom:0px !important;
+  padding:0px 15px;
+}
+.page-section-demo{
+  padding:0px !important;  
+}
+.page-section-title
+{
+  text-align: center;
+  padding: 10px 0px !important;   
+}
+.input{
+  height:35px !important;
+  line-height:35px !important;
+  background-color:#66cccc;
+}
+.usernamecolor{
+  color:#999 !important;
+}

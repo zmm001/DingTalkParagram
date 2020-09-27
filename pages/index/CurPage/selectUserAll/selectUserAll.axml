@@ -1,0 +1,31 @@
+<import src="../../../CommonComponent/userInfo/userInfo.axml" />
+<view class="viewbackgroundcolor" >
+  <view class="page_nav" >
+     <view class="search">
+        <icon type="search"  size="14" style="position: absolute;left: 20px;top: 15px;"/>
+        <input type="text" onInput="searchchange" class="searchinput" style="width:{{inputwidth}}px" placeholder="输入用户名称" onFocus="focuchange" onBlur="blurchange"/>
+        <button type="default" a:if={{Issearchbtn}} onTap="search"  class="searchbtn" plain>搜索</button>
+      </view>
+      <view class="searchtitle">人员选择</view>
+  </view>
+  <view class="page_content" style="background-color:white;padding:0px 8px;" >
+         <view style="position:relative">
+            <scroll-view class="scrollList" scroll-y="{{true}}" style="height:{{userList.srcheight}}px" >
+              <block a:for={{userList.data}}>
+                  <view class="userLi_two" a:if={{item.ishide!=1}} >
+                        <view class="{{item.checkeds==1?'inputradiocheck':'inputradio'}}" data-item="{{item}}" catchTap="tapuser">
+                  
+                        </view>
+                        <image  src="{{item.icon!=''&&(icon.indexOf('http://')>-1||icon.indexOf('https://')>-1)?item.icon:'../../../../images/watch2.png'}}" class="floatright showimage"  />
+                        <view style="float:left;padding-left:5px;width:{{userList.rightwidth}}px">
+                            {{item.fullName}}
+                        </view>
+                  </view>
+              </block>
+          </scroll-view>
+         </view>
+  </view>
+  <view style="position:absolute;bottom:100px;right:20px;width:40px;height:60px">
+    <view onTap="backlastPage"><image style="width:30px;height:28px" src="../../../images/reject.png" class="imagesbtn" /></view>
+  </view>
+</view>

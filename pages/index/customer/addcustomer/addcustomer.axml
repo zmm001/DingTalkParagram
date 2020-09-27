@@ -1,0 +1,161 @@
+<view class="mui-content">
+  <form onSubmit="custSubmit">
+  <view id="message">
+    <view id="conTitle">客户信息</view>
+    <view class="mui-table-view">
+      <view class="mui-table-view-cell mui-collapse-content" >
+        <view class="span floatleft">客户名称</view>
+        <input type="text" style="width:{{custinputwidth}}px"  id="custName" name="custName"  class="pad-left floatleft" value="{{custName}}"  data-name="custName" onInput="getinputvalue" />
+        <view onTap="repeatCustomer" >
+          <view class="floatleft" style="height: 20px;width: 1px;border-left: 1px solid #ccc;display: inline;"></view>
+          <icon type="search" size="{{16}}" style="margin-left:4px" />
+        </view>
+      </view>
+      <view class="mui-table-view-cell" id="custTypePickerBtn" onTap="opentype">
+						<view class="span floatleft">客户类型</view>
+						<image  src="../../../../images/left.png" alt="" class="mui-pull-right img"  />
+            <view id="custType"  name="custType" class="ui-alert mui-pull-right"  style="widtd:60%;color:#000;" >{{typetext}}</view>
+      </view>
+      <view class="mui-table-view-cell" id="sourcePickerBtn" onTap="opensource">
+        <view class="span floatleft">客户来源</view>
+        <image src="../../../../images/left.png" alt="" class="mui-pull-right img" />
+        <view id="sourcediv" name="source" class="ui-alert mui-pull-right" style="widtd:60%;color:#000;">{{sourcetext}}</view>
+      </view>
+      <view class="mui-table-view-cell" id='industryPickerBtn'  onTap="opencusttype" >
+        <view class="span floatleft">客户行业</view>
+        <image src="../../../../images/left.png" alt="" class="mui-pull-right img" />
+        <view  data-readType="1" value="" data-type="isNull" data-val="true" data-tips="请选择客户行业" class="ui-alert mui-pull-right" style="color:#000;">{{custyupetext}}</view>
+      </view>
+      <view class="mui-table-view-cell" id='areaPickerBtn' onTap="open">
+        <view class="span floatleft">客户区域</view>
+        <image src="../../../../images/left.png" alt="" class="mui-pull-right img" />
+        <view id="area" class="ui-alert mui-ellipsis mui-pull-right" style="color:#000;">{{areatext}}</view>
+      </view>
+      <view class="mui-table-view-cell" >
+        <view class="span floatleft" >地  址</view>
+        <input type="text" style="width:{{addressinputwidth}}px" class="floatleft" placeholder="请输入详细地址" id="address"  name="address"  value="{{address}}" />
+        <image onTap="getlocation" src="../../../../images/loader.png" alt="" class="mui-pull-right loader img" id="selMap" style="height:26px" />
+      </view>    
+    </view>
+  </view>
+
+  <view id="content">
+    <view id="conTitle">联系人</view>
+    <view class="mui-table-view">
+      <view class="mui-table-view-cell mui-collapse-content">
+        <view class="span floatleft">姓名</view>
+        <input type="text" id="fullName" name="fullName" data-type="isNull" data-val="true" data-tips="请输入客户名称（4-80位）" data-min="4" data-max="80" placeholder="必填" class="pad-left floatleft" style="width: 52%;"  onInput="bindKeyInput" />
+        <view class="mui-pull-right " id="divSex" onTap="opensex">
+          <view class="span floatleft" id="spanSex" style="width:45px">{{selsextext}}</view>
+          <input id='sex' name="sex" class="mui-hidden" value="{{sex}}" data-type="isNull" data-val="true" data-tips="请选择客户行业" type="hidden" />
+          <image src="../../../../images/left.png" alt="" class="mui-pull-right img floatleft" />
+        </view>
+      </view>
+
+      <view class="mui-table-view-cell mui-collapse-content">
+        <view class="span floatleft">手机号码</view>
+        <input type="tel" id="phoneNum" name="phoneNum" placeholder="手机与电话必填一个" data-type="isPhone" data-val="true" data-tips="抱歉，手机号码错误" data-required="false" class="pad-left">
+      </view>
+
+      <view class="mui-table-view-cell mui-collapse-content">
+        <view class="span floatleft">电话号码</view>
+        <input type="tel" id="tel" name="tel" placeholder="手机与电话必填一个" class="pad-left">
+      </view>
+
+      <view class="mui-table-view-cell mui-collapse-content">
+        <view class="span floatleft">职务</view>
+        <input type="text" id="deptName" name="deptName" class="floatleft" placeholder="部门" style="padding-left: 10px;width: 5em;border-right: 1px solid #999;border-radius: 0;" />
+        <input type="text" id="postName" name="postName" class="floatleft" placeholder="岗位" style="width: 5em;padding-left: 20px;" />
+      </view>
+      <view class="mui-table-view-cell mui-collapse-content">
+        <view class="span floatleft">邮箱</view>
+        <input type="text" id="email" name="email" placeholder="输入邮箱" class="pad-left" data-type="isEmail" data-val="true" data-tips="抱歉，邮箱地址错误" data-required="false">
+      </view>
+    </view>
+  </view>
+ <view class="page-section-demo">
+    <button form-type="submit" type="primary" >保存</button>
+  </view>
+  </form>
+</view>
+
+
+
+<block a:if="{{isShowtype||isShow||isShowhangye}}">
+    <view class="city-picker-mask" a:if="{{isShow}}">
+        <view class="city-picker-inner section">
+           <view class="city-header page-section-demo ">
+                 <button type="default" onTap="close" class="city-cancel">取消</button>
+                 <button type="primary" onTap="open" class="city-true">确定</button>
+           </view>
+           <picker-view value="{{value}}" onChange="onChange" class="citybody">
+              <picker-view-column>
+                 <view class="picker-column-item" a:for="{{provinces}}" a:key="item">{{item}}</view>
+              </picker-view-column>
+              <picker-view-column>
+                 <view class="picker-column-item" a:for="{{citys}}" a:key="item">{{item}}</view>
+              </picker-view-column>
+              <picker-view-column>
+                 <view class="picker-column-item" a:for="{{countys}}" a:key="item">{{item}}</view>
+              </picker-view-column>
+           </picker-view>
+        </view>
+    </view>
+    <view class="city-picker-mask" a:if="{{isShowtype}}">
+        <view class="city-picker-inner section">
+           <view class="city-header page-section-demo ">
+                 <button type="default" onTap="closetype" class="city-cancel">取消</button>
+                 <button type="primary" onTap="opentype" class="city-true">确定</button>
+           </view>
+           <picker-view value="{{custtypevalue}}" onChange="onChangeType" class="citybody">
+            <picker-view-column>
+                 <view class="picker-column-item" a:for="{{custparentType}}" a:key="item">{{item.text}}</view>
+              </picker-view-column>
+              <picker-view-column>
+                 <view class="picker-column-item" a:for="{{selTypeData}}" a:key="item">{{item.title}}</view>
+              </picker-view-column>
+           </picker-view>
+        </view>
+    </view>
+    <view class="city-picker-mask" a:if="{{isShowhangye}}">
+        <view class="city-picker-inner section">
+           <view class="city-header page-section-demo ">
+                 <button type="default" onTap="closecusttype" class="city-cancel">取消</button>
+                 <button type="primary" onTap="opencusttype" class="city-true">确定</button>
+           </view>
+           <picker-view value="{{selcustval}}" onChange="onChangeCust" class="citybody">
+            <picker-view-column>
+                 <view class="picker-column-item" a:for="{{custyupelist}}" a:key="item">{{item.text}}</view>
+              </picker-view-column>
+           </picker-view>
+        </view>
+      </view>
+      <view class="city-picker-mask" a:if="{{isShowSex}}">
+        <view class="city-picker-inner section">
+           <view class="city-header page-section-demo ">
+                 <button type="default" onTap="closesex" class="city-cancel">取消</button>
+                 <button type="primary" onTap="opensex" class="city-true">确定</button>
+           </view>
+           <picker-view value="{{selsexval}}" onChange="onChangeSex" class="citybody">
+            <picker-view-column>
+                 <view class="picker-column-item" value="0" >先生</view>
+                 <view class="picker-column-item" value="1" >女士</view>
+              </picker-view-column>
+           </picker-view>
+        </view>
+    </view>
+     <view class="city-picker-mask" a:if="{{isShowsource}}">
+        <view class="city-picker-inner section">
+           <view class="city-header page-section-demo ">
+                 <button type="default" onTap="closesource" class="city-cancel">取消</button>
+                 <button type="primary" onTap="opensource" class="city-true">确定</button>
+           </view>
+           <picker-view value="{{sourcevalue}}" onChange="onsource" class="citybody">
+              <picker-view-column>
+                 <view class="picker-column-item" a:for="{{selsourceval}}" a:key="item">{{item.text}}</view>
+              </picker-view-column>
+           </picker-view>
+        </view>
+    </view>
+</block>
+

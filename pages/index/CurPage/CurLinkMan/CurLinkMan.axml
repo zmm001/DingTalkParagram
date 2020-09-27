@@ -1,0 +1,15 @@
+<view>
+  <view class="page_content">
+    <view>
+        <view style="position: relative;" >
+            <view a:if={{LinkData.data}} class="scrollList"  >
+                <block a:for={{LinkData.data}}>
+                    <view  data-linkMan="{{item.linkName}}" data-tel="{{item.tel}}" data-phoneNum="{{item.phoneNum}}" class="followLi" onTap="{{LinkData.oncheck}}">
+                      <label><text>{{item.linkName}}</text></label>
+                    </view>
+                </block>
+            </view>
+        </view>
+    </view>
+  </view>
+</view>

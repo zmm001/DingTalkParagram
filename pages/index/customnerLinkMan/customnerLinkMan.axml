@@ -1,0 +1,87 @@
+<view>
+  <view class="page_nav">
+    <view class="search">
+        <icon type="search"  size="14" style="position: absolute;left: 20px;top: 15px;"/>
+        <input type="text" onInput="searchchange" class="searchinput  " style="width:{{inputwidth}}px" placeholder="商机/客户名称、负责/参与/创建人" onBlur="blurchange" onFocus="focuchange"/>
+        <button type="default" a:if={{searchmode.Issearchbtn}} onTap="search"  class="searchbtn" plain>搜索</button>
+    </view>
+    <view class="searchdiv">
+       <button type="ghost" hover-class="btncolor" class="input" size="mini" onTap="openyq" style="margin-left:2%" >{{searchmode.estimateQuarterName.length>0&&searchmode.estimateQuarterName!="跟进排序"?searchmode.estimateQuarterName:'跟进排序'}}</button>
+       <button type="ghost" hover-class="btncolor" class="input" size="mini" onTap="openyy" >{{searchmode.saleUserName.length>0&&searchmode.saleUserName!='归属销售'?searchmode.saleUserName:'归属销售'}}</button>
+       <button type="ghost" hover-class="btncolor" class="input" size="mini" onTap="openxs" >{{searchmode.projectStateName.length>0?searchmode.projectStateName:'跟进状态'}}</button>
+    </view>
+  </view>
+  <view class="page_content">
+    <view>
+        <view  style="position: relative;" >
+          <scroll-view style="height:{{scrollheight}}px"  scroll-y="{{true}}"	onScroll="projectscroll"  >
+            <view a:if={{projectlist.data}} class="scrollList"  >
+                <block a:for={{projectlist.data}}>
+                    <view  data-id={{item.custId}} class="followLi" onTap="{{projectlist.oncheck}}">
+                      <view style='float:left;overflow: hidden;width:40px;magin-top:5px'>
+                          <image src="{{item.icon}}" style='width:40px;height:40px;border-radius:50%;' />
+                      </view>
+                      <view style='float:left;overflow: hidden;width:{{inponewidth*0.4}}px;color:#bbb'>
+                          <view style='padding:3px 4px'>{{item.fullName}}</view>
+                          <view style='padding:3px 4px'>{{item.tel}}</view>
+                      </view>
+                      <view style='float:left;overflow: hidden;width:{{inponewidth*0.6}}px;'>
+                          <view style='padding:3px 4px;color:#bbb'>{{item.custName}}</view>
+                          <view style='padding:3px 4px'>{{item.sendName}}</view>
+                      </view>
+                      <view style='float:left;overflow: hidden;' data-tel="{{item.tel}}" onTap="{{projectlist.oncellphone}}"><image style='width:35px;height:35px;magin-top:5px' src="../../../images/newphone.png"/></view>
+                    </view>
+                </block>
+            </view>
+            <view class="list-bottom-msg">{{projectlist.loadtext}}</view>
+          </scroll-view>
+        </view>
+        <view style="position:absolute;bottom:100px;right:20px;width:40px;height:60px">
+            <view onTap="projectrefreshre"><image style="width:30px;height:28px" src="../../../images/reject.png" class="imagesbtn" /></view>
+        </view>
+  </view>
+</view>
+
+<block a:if="{{estimatedate.isShow||projectstate.isShow||preson.isShow}}">
+  <view class="city-picker-mask" a:if="{{estimatedate.isShow}}">
+    <view class="city-picker-inner section">
+        <view class="city-header page-section-demo ">
+              <button type="default" onTap="closeyq" class="city-cancel">取消</button>
+              <button type="primary" onTap="openyq" class="city-true">确定</button>
+        </view>
+        <picker-view value="{{estimatedate.val}}" onChange="estimatedateChange" class="citybody">
+          <picker-view-column>
+              <view class="picker-column-item" a:for="{{estimatedate.data}}" a:key="item">{{item.text}}</view>
+          </picker-view-column>
+        </picker-view>
+    </view>
+  </view>
+  
+  <view class="city-picker-mask" a:if="{{preson.isShow}}">
+    <view class="city-picker-inner section">
+        <view class="city-header page-section-demo ">
+              <button type="default" onTap="closeyy" class="city-cancel">取消</button>
+              <button type="primary" onTap="openyy" class="city-true">确定</button>
+        </view>
+        <picker-view value="{{preson.val}}" onChange="presonChange" class="citybody">
+          <picker-view-column>
+              <view class="picker-column-item" a:for="{{preson.data}}" a:key="item">{{item.text}}</view>
+          </picker-view-column>
+        </picker-view>
+    </view>
+  </view>
+
+  <view class="city-picker-mask" a:if="{{projectstate.isShow}}">
+    <view class="city-picker-inner section">
+        <view class="city-header page-section-demo ">
+              <button type="default" onTap="closexs" class="city-cancel">取消</button>
+              <button type="primary" onTap="openxs" class="city-true">确定</button>
+        </view>
+        <picker-view value="{{projectstate.val}}" onChange="projectstateChange" class="citybody">
+          <picker-view-column>
+              <view class="picker-column-item" a:for="{{projectstate.data}}" a:key="item">{{item.text}}</view>
+          </picker-view-column>
+        </picker-view>
+    </view>
+  </view>
+</block>

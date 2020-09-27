@@ -1,0 +1,22 @@
+.a-page{
+background-color: white;
+}
+.logininput{
+  margin-top:15px;
+  float: left;
+  width:216px;
+}
+.imageicon{
+  width:21px;
+  height:21px;
+  float: left;
+  background-size: cover;
+  margin-top: 18px;
+}
+.imagepass{
+  width:18px;
+  height:20px;
+  float: left;
+  background-size: cover;
+  margin-top: 18px;
+}

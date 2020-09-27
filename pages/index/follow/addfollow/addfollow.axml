@@ -1,0 +1,130 @@
+<view class="page">
+  <view class="savelist">
+    <view class="saveul">
+        <view class="saveli" onTap="openCustList">
+          <label class="savespan"><text >{{model.classId==2?"渠道名称":"客户名称"}}</text></label>
+          <label class="select_label floatright" >
+            <text class="select_label_text">
+            {{model.custName}}
+            </text>
+          <image  src="../../../../images/left.png" class="floatright img"  />
+          </label>
+        </view>
+        <view class="saveli" onTap="openendCustList" a:if="{{model.classId==2}}" >
+          <label class="savespan"><text >渠道客户</text></label>
+          <label class="select_label floatright" >
+            <text class="select_label_text">
+            {{model.endCustName}}
+            </text>
+          <image  src="../../../../images/left.png" class="floatright img"  />
+          </label>
+        </view>
+        <view class="saveli" onTap="openlinkList" a:if="{{model.endCustId==null||model.endCustId.length==0}}">
+          <label class="savespan"><text >联系人</text></label>
+          <label class="select_label floatright" >
+            <text class="select_label_text">
+            {{model.linkMan}}
+            </text>
+          <image  src="../../../../images/left.png" class="floatright img"  />
+          </label>
+        </view>
+        <view class="saveli" onTap="openendlinkList" a:if="{{model.endCustId!=null&&model.endCustId.length>0}}" >
+          <label class="savespan"><text >联系人</text></label>
+          <label class="select_label floatright" >
+            <text class="select_label_text">
+            {{model.endLinkMan}}
+            </text>
+          <image  src="../../../../images/left.png" class="floatright img"  />
+          </label>
+        </view>
+        <view class="saveli" onTap="openlinkWay"  >
+          <label class="savespan"><text >跟进方式</text></label>
+          <label class="select_label floatright" >
+            <text class="select_label_text">
+            {{model.linkWayName}}
+            </text>
+          <image  src="../../../../images/left.png" class="floatright img"  />
+          </label>
+        </view>
+        <view class="saveli" onTap="openproject"  >
+          <label class="savespan"><text >关联商机</text></label>
+          <label class="select_label floatright" >
+            <text class="select_label_text">
+            {{model.projectName}}
+            </text>
+          <image  src="../../../../images/left.png" class="floatright img"  />
+          </label>
+        </view>
+        <view class="saveli" data-modelnode="model.linkDate" onTap="selectfollowDate"  a:if="{{!model.isfollowplan}}">
+          <label class="savespan"><text >跟进时间</text></label>
+          <label class="select_label floatright" >
+            <text class="select_label_text">
+            {{model.linkDate}}
+            </text>
+          <image  src="../../../../images/left.png" class="floatright img"  />
+          </label>
+        </view>
+        <view class="saveli" a:if="{{!model.isfollowplan}}" >
+          <label class="savespan"><text >转为日报</text></label>
+          <label class="select_label floatright" style="margin-top:0px" >
+           <switch checked="{{model.isDiary==1?true:false}}"  onChange="changeDiary"/>
+          </label>
+        </view>
+        <view class="saveli" style="height:auto;overflow: hidden;" a:if="{{!model.isfollowplan}}">
+          <view class="savespan" style="float:none">
+            <text>跟进记录</text>
+          </view>
+          <view>
+            <textarea data-name="content" maxlength="500"  style="font-size:12px;margin-top:10px;height:40px"   placeholder="必填" onInput="getinputvalue" value="{{model.content}}"  />
+          </view>
+          <view class="locationdiv" a:if="{{!model.isfollowplan}}">
+            <label class="savespan" style="width:100%;height:auto"><image onTap="getlocation" src="../../../../images/loader.png" style="height:18px;width:15px" /><text style="padding-left:5px">{{model.mobileAddress}}</text></label>
+          </view>
+          <view id="filediv" a:if="{{!model.isfollowplan}}">
+             <label>
+                <image onTap="fileupload"  src="../../../../images/photos.png" class="floatright"  />
+             </label>
+             <block a:for={{images.data}}>
+                <label><image class="fileimage" data-url="{{item.url}}" src="{{item.url}}" onTap="{{images.showimage}}" onLongTap="{{images.delchange}}" /></label>
+             </block>
+          </view>
+        </view>
+        <view class="saveli" data-modelnode="model.fplinkDate" onTap="selectfollowDate">
+          <label class="savespan"><text >{{!plan?"计划时间":"下次联系"}}</text></label>
+          <label class="select_label floatright" >
+            <text class="select_label_text">
+            {{model.fplinkDate}}
+            </text>
+          <image  src="../../../../images/left.png" class="floatright img"  />
+          </label>
+        </view>
+        <view class="saveli" style="height:auto;overflow: hidden;" >
+          <view class="savespan" style="float:none">
+            <text>{{!plan?"计划跟进":"下次跟进"}}</text>
+          </view>
+          <view>
+            <textarea value="{{model.fpcontent}}" data-name="fpcontent" maxlength="500"  style="font-size:12px;margin-top:10px;height:40px"   placeholder="必填" onInput="getinputvalue" />
+          </view>
+        </view>
+    </view>
+  </view>
+  <view style="width:100%;position: relative;margin: 20px 0px;">
+   <button form-type="submit" type="primary" style="margin:0px 15px;" onTap="submitsave" >保存</button>
+  </view>
+</view>
+
+<block a:if="{{linkway.isShow}}">
+  <view class="city-picker-mask" a:if="{{linkway.isShow}}">
+    <view class="city-picker-inner section">
+        <view class="city-header page-section-demo ">
+              <button type="default" onTap="closelinkWay" class="city-cancel">取消</button>
+              <button type="primary" onTap="openlinkWay" class="city-true">确定</button>
+        </view>
+        <picker-view value="{{linkway.value}}" onChange="linkwayChange" class="citybody">
+          <picker-view-column>
+              <view class="picker-column-item" a:for="{{linkway.data}}" a:key="item">{{item.text}}</view>
+          </picker-view-column>
+        </picker-view>
+    </view>
+  </view>
+</block>

@@ -1,0 +1,104 @@
+.page{
+    background-color:#efeff4;
+    padding: 0px;
+}
+.savelist{
+    width:100%;
+    padding:10px 0px 0px 0px;
+    /* margin-top:10px; */
+    background-color:#fff;
+}
+.saveul{
+    overflow: hidden;
+}
+.saveli{
+    padding: 3px 0px;
+    margin:  0px 0px 0px 15px;
+    height: 25px;
+    line-height: 25px;
+}
+.savespan{
+    width:60px;
+    font-size: 12px;
+    padding-right: 10px;
+    height:20px;
+    color:#66CCCC;
+    margin-top:5px;
+    float: left;
+}
+.select_label{
+    font-size: 12px;
+    padding-right: 10px;
+    height:20px;
+    margin-top:5px;
+    width:auto;
+}
+.select_label_text{
+    padding-right: 10px;
+}
+.img{
+    margin-top: 4px;
+    margin-right: 0px;
+    width:15px;
+}
+.textarea:empty:before{
+    content:attr(placeholder);
+    color: #999999;
+}
+#filediv image{
+    width:50px;
+    height:50px;
+    margin-right:5px;
+}
+.locationdiv{
+    overflow: hidden;
+}
+#filediv{
+    overflow: hidden;
+    margin-top:5px;
+}
+.page-title{
+    font-size:16px;
+    color:#66CCCC;
+    height:30px;
+    line-height:30px;
+}
+.btnradis{
+    border:1px solid #66CCCC;
+    border-radius:10px;
+    width:35px;
+    height:20px;
+    line-height: 20px;
+    font-size: 12px;
+    text-align: center;
+}
+.commonttext{
+    white-space: normal;
+    word-break: break-all; 
+    word-wrap:break-word;
+}
+.postionbottom{
+    position: fixed;
+    bottom:0px;
+    width:100%;
+    height:45px;
+    line-height:45px;
+    background-color:#F2F2F2;
+}
+.saveinput{
+    margin-top:5px;
+    float: left;
+    border: none;
+    font-size: 14px;
+    padding: 5.5px 6px;
+    height:15px;
+    margin: 5px 10px;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: 5px;
+    width:60px;
+}
+#sendmsg{
+    width: 75px;
+    margin-top: 6px;
+    margin-bottom: 0px;
+}

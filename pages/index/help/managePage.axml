@@ -1,0 +1,16 @@
+<view >
+	<view style="margin:10% auto;">
+		<label style="text-align:center;width:100%;">登录管理后台管理企业</label><label style="color: rgb(43, 155, 213);width:100%;text-align:center;">http://saas.ijuyou.com</label>
+	</view>
+	<view style="color: rgb(171, 171, 171);    margin-left: 10%;margin-right: 10%;text-align: center;font-weight: 200;">
+		<label style="width:70%;text-align:left;">更方便的管理企业通讯录</label>
+		<label style="width:70%;text-align:left;">更灵活的员工权限设置</label>
+		<label style="width:70%;text-align:left;">更丰富的企业个性化设置</label>
+	</view>
+	<!-- <button type="primary" onTap="toFileVedio">
+		上传视频
+	</button>
+	<button type="primary" onTap="toChooseUser">
+		选人组件
+	</button> -->
+</view>

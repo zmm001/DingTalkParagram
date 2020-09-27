@@ -1,0 +1,74 @@
+<view class="page">
+  <view style="width:100%;height:10px;"></view>
+  <view class="savelist">
+    <view class="saveul">
+        <view style="border-left:3px solid #fbab4a;border-bottom:1px solid #ccc;height:40px;width:100%;line-height:40px" >
+          <label style="width:100px;font-size:12px;padding-left:10px"><text >主联系人</text></label>
+          <label style="font-size:12px">
+            <radio-group class="radio-group" onChange="radioChange">
+              <label class="radio" a:for="{{items}}">
+                <radio style="margin-left:10px;" value="{{item.value}}" checked="{{item.checked}}"/>{{item.name}}
+              </label>
+            </radio-group>
+          </label>
+        </view>
+        <view class="saveli">
+          <label class="savespan"><text >姓名</text></label>
+          <input type="text" data-name="fullName" class="saveinput"   placeholder="必填" onInput="getinputvalue" value="{{model.fullName}}" />
+          <label class="select_label floatright" >
+            <text class="select_label_text" onTap="opensex" style="color:#66CCCC" >
+            {{model.sex}}
+            </text>
+          <image  src="../../../../images/left.png" class="floatright img"  />
+          </label>
+        </view>
+        <view class="saveli">
+          <label class="savespan"><text >手机号码</text></label>
+          <input type="text" data-name="phoneNum" class="saveinput"   placeholder="手机和电话必填一个" onInput="getinputvalue" value="{{model.phoneNum}}" />
+        </view>
+        <view class="saveli">
+          <label class="savespan"><text >电话号码</text></label>
+          <input type="text" data-name="tel" class="saveinput"   placeholder="手机和电话必填一个" onInput="getinputvalue" value="{{model.tel}}" />
+        </view>
+        <view class="saveli">
+          <label class="savespan"><text style="margin-right:2em">职</text><text>务</text></label>
+          <input type="text" data-name="deptName" class="saveinput"   placeholder="部门" onInput="getinputvalue" value="{{model.deptName}}" style="width:100px;" />
+          <view style="border-right:1px solid #ccc;width:1px;height:25px;float:left"></view>
+          <input type="text" data-name="postName" class="saveinput"   placeholder="岗位" onInput="getinputvalue" value="{{model.postName}}" style="width:100px;"/>
+        </view>
+        <view class="saveli">
+          <label class="savespan"><text style="margin-right:2em">邮</text><text>箱</text></label>
+          <input type="text" data-name="email" class="saveinput"  onInput="getinputvalue" value="{{model.email}}" />
+        </view>
+        <view class="saveli">
+          <label class="savespan"><text style="margin-right:2em">Q</text><text>Q</text></label>
+          <input type="text" data-name="qq" class="saveinput"  onInput="getinputvalue" value="{{model.qq}}" />
+        </view>
+        <view class="saveli" onTap="openbirthday" >
+          <label class="savespan"><text style="margin-right:2em">生</text><text>日</text></label>
+          <input type="text"  disabled="disabled" class="saveinput" value="{{model.birthday}}" />
+        </view>
+      </view>
+    </view>
+  </view>
+  <view style="width:100%;position: relative;margin: 20px 0px;">
+   <button form-type="submit" type="primary" style="margin:0px 15px;" onTap="submitsave" >保存</button>
+  </view>
+</view>
+
+<block a:if="{{isShowSex}}">
+  <view class="city-picker-mask">
+        <view class="city-picker-inner section">
+           <view class="city-header page-section-demo ">
+                 <button type="default" onTap="closesex" class="city-cancel">取消</button>
+                 <button type="primary" onTap="opensex" class="city-true">确定</button>
+           </view>
+           <picker-view value="{{selval}}" onChange="onChangeSex" class="citybody">
+            <picker-view-column>
+                 <view class="picker-column-item" value="1" >先生</view>
+                 <view class="picker-column-item" value="0" >女士</view>
+              </picker-view-column>
+           </picker-view>
+        </view>
+    </view>
+</block>

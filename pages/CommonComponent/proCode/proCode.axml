@@ -1,0 +1,11 @@
+<template name="proCode">
+  <view class="proCode" hidden='{{!proCodeIsShow}}'>
+     <view class='bjcg-mask' onTap="hideProCode">
+    <view class='proCodeBox'>
+      <view class="proCodeItem" a:for="{{proCodeList}}"  data-idx="{{index}}" catchTap='getProCode'>
+        <text class="proCodeItemText">{{item}}</text>
+      </view>
+    </view>
+    </view> 
+  </view>
+</template>

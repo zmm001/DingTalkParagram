@@ -1,0 +1,199 @@
+<view>
+   <view class="page_nav">
+     <view class="page_nav_content">
+      <view class="media-object float-left">
+         <text selectable="false" class="media-text" >{{customer.spantext}}</text>
+      </view>
+      <view class="media-body float-left" style="width:{{objectcontentwidth}}">
+        <text selectable="false" class="media-text blockobject" >{{customer.custName}}</text>
+          <view class="blockobject" style="width:{{objectcontentwidth}}">
+           <label class="float-left" style="line-height: 1.8;width:{{objectcontentwidth-80}}px">
+            <text selectable="false" class="media-text" >{{customer.ownUser}}</text>
+          </label>
+          <label class="float-right" style="line-height: 1.8;width:80px">
+            <text selectable="false" class="media-text">{{customer.updateDate}}</text>
+          </label>
+         </view> 
+      </view>
+      </view>
+    </view>
+   <view class="page_content_tap">
+      <view class="page_content_li {{activeone==true?'tap_active':''}}"  onTap="followcontent">
+        跟进
+      </view>
+      <view class="page_content_li {{activetwo==true?'tap_active':''}}" onTap="detailcontent">
+        详情
+      </view>
+      <view class="page_content_li {{activethree==true?'tap_active':''}}" onTap="linkcontent">
+        联系人
+      </view>
+   </view>
+   <view class="page_content">
+      <view a:if="{{activelink}}">
+        <view style="margin-top:10px;background-color: white;">
+          <view style="border-bottom:1px solid #ccc" class="linktitle {{selectlink.isMain==1?'mainlink':'otherlink'}}">
+            <label style="width:8em;">{{selectlink.isMain==1?'主联系人':'联系人'}}</label>
+            <button type="default" size="defaultSize" class="btnclose" onTap="closetippage" > 关闭 </button>
+          </view>
+          <view class="detailLi">
+            <label class="detailtext">
+              <text style="margin-right:2em">姓</text><text>名：</text>
+            </label>
+            <text class="detailtextcontent">{{selectlink.fullName+" "+selectlink.sex}}</text>  
+          </view>
+          <view class="detailLi">
+            <label class="detailtext">
+              <text style="margin-right:2em">职</text><text>务：</text>
+            </label>
+            <text class="detailtextcontent">{{selectlink.deptName+" "+selectlink.postName}}</text>  
+          </view>
+          <view class="detailLi" >
+            <label class="detailtext">手机号码：</label>
+            <text class="detailtextcontent">{{selectlink.phoneNum}}</text>  
+          </view>
+          <view class="detailLi">
+            <label class="detailtext">电话号码：</label>
+            <text class="detailtextcontent">{{selectlink.tel}}</text>  
+          </view>
+          <view class="detailLi">
+            <label class="detailtext">
+              <text style="margin-right:2em">邮</text><text>箱：</text>
+            </label>
+            <text class="detailtextcontent">{{selectlink.email}}</text>  
+          </view>
+          <view class="detailLi">
+            <label class="detailtext">
+              <text style="margin-right:2em">Q</text><text>Q：</text>
+            </label>
+              <text class="detailtextcontent">{{selectlink.qq}}</text>
+          </view>  
+          <view class="detailLi">
+            <label class="detailtext">
+              <text style="margin-right:2em">生</text><text>日：</text>
+            </label>
+              <text class="detailtextcontent">{{selectlink.birthday}}</text>  
+          </view>
+        </view>
+         <view  class="List-bottom" data-id="{{selectlink.id}}"  onTap="{{selectlink.editlinkinfo}}">
+            <label><image style="width:15px;height:14px;margin-right: 10px;vertical-align:inherit" src="../../../../images/revise.png" class="iconsize" />修改联系人</label>
+        </view>
+      </view>
+      <view a:if="{{activeone}}"  class="page_content_view">
+        <scroll-view id="followscroll" style="height:{{followData.scrollheight}}px"  scroll-y="{{true}}"	onScroll="followscroll"  >
+            <view class="list" style="position: relative;" >
+                <view a:if={{followData.data}} class="scrollList">
+                    <block a:for={{followData.data}}>
+                        <view  class="list-item" onTap="{{followData.onItemTap}}" data-id={{item.id}} >
+                          <view  class="float-left datecontent" >
+                            <view class="nullcontent"></view>
+                            <view class="datecontent-mes">{{item.linkDate}}</view>
+                          </view>
+                          <view  class="float-left follow-content" >
+                            <view class="nullcontent"></view>
+                            <image src="{{item.icon}}"  class="followcontent-icon" style="top:{{item.top}}" />
+                            <view class="follow-mes">
+                              <view class="follow-mesL mui-ellipsis ">
+                                {{item.linkMan}}
+                              </view>
+                              <view class="follow-mesR mui-ellipsis-2 ">
+                                {{item.content}}
+                              </view>
+                            </view>
+                          </view>
+                        </view>
+                    </block>
+                </view>
+                <view class="list-bottom-msg"  a:if="{{followData.isload}}">{{followData.loadtext}}</view>
+              </view>
+        </scroll-view>
+        <view style="position:absolute;bottom:100px;right:20px;width:40px;height:60px">
+            <view onTap="myrefreshre"><image style="width:30px;height:28px" src="../../../../images/reject.png" class="imagesbtn" /></view>
+            <navigator url="../../follow/addfollow/addfollow?custId={{customer.custId}}&custName={{customer.custName}}&classId={{customer.classId}}" hover-class="navigator-hover"><image style="width:30px;height:28px" src="../../../../images/count-plus.png" class="imagesbtn" /></navigator>
+        </view>
+      </view>
+      <view a:if="{{activetwo}}">
+        <view style="margin-top:10px;background-color: white;">
+          <view class="detailLi">
+            <label class="detailtext">客户名称：</label>
+            <text class="detailtextcontent">{{customer.custName}}</text>  
+          </view>
+          <view class="detailLi">
+            <label class="detailtext">客户类型：</label>
+            <text class="detailtextcontent">{{customer.typeName}}</text>  
+          </view>
+          <view class="detailLi" a:if={{customer.channelName!=null}}>
+            <label class="detailtext">所属渠道：</label>
+            <text class="detailtextcontent">{{customer.channelName}}</text>  
+          </view>
+          <view class="detailLi">
+            <label class="detailtext">客户区域：</label>
+            <text class="detailtextcontent">{{customer.province+" "+customer.city+" "+customer.county}}</text>  
+          </view>
+          <view class="detailLi">
+            <label class="detailtext" style="float:left;"><text style="margin-right:1.8em;float:left;">地</text><text style="float:left;">址：</text></label>
+            <text class="detailtextcontent" style="width:{{addresswidth}}px;float:left">{{customer.address}}</text>  
+          </view>
+          <view class="detailLi">
+            <label class="detailtext">客户行业：</label>
+            <text class="detailtextcontent">{{customer.industry}}</text>  
+          </view>  
+          <view class="detailLi">
+            <label class="detailtext">公司总机：</label>
+            <text class="detailtextcontent">{{customer.tel}}</text>  
+          </view>
+          <view class="detailLi">
+            <label class="detailtext">公司传真：</label>
+            <text class="detailtextcontent">{{customer.fax}}</text>  
+          </view>
+           <view class="detailLi">
+            <label class="detailtext">客户来源：</label>
+            <text class="detailtextcontent">{{customer.source}}</text>  
+          </view>
+        </view>
+         <view a:if="{{customer.editcustinfo}}" class="List-bottom" onTap="editcust">
+            <label><image style="width:15px;height:14px;margin-right: 10px;vertical-align:inherit" src="../../../../images/revise.png" class="iconsize" />编辑基本信息</label>
+        </view>
+      </view>
+      <view a:if="{{activethree&&!activelink}}">
+        <view  style="position: relative;" >
+          <scroll-view style="height:{{linkData.scrollheight}}px"  scroll-y="{{true}}"	onScroll="linkscroll"  >
+            <view a:if={{linkData.data}} class="scrollList">
+                <block a:for={{linkData.data}}>
+                    <view  data-id={{item.id}} >
+                      <view class="linkcard">
+                        <view class="linktitle {{item.MainCss==1?'mainlink':'otherlink'}}">
+                          <label style="width:8em;">{{item.fullName}}</label>
+                        </view>
+                        <view class="linkphone"  data-tel="{{item.phoneNum}}" onTap="{{linkData.cellphone}}">
+                        <label style="width:8em;">手机号码</label>
+                        <label style="width: 10em;color:#66CCCC">{{item.phoneNum}}</label>
+                        <image style="float: right;margin-right: 15px;" src="../../../../images/telephone.png" class="iconsize" />
+                        </view>
+                        <view class="linktel" data-tel="{{item.tel}}" onTap="{{linkData.cellphone}}" >
+                        <label style="width:8em;" >电话号码</label>
+                        <label style="width: 10em;color:#66CCCC">{{item.tel}}</label>
+                        <image style="float: right;margin-right: 15px;" src="../../../../images/phone.png" class="iconsize" />
+                        </view>
+                        <view class="linkoption">
+                            <view style="width:50%;border-right:1px solid #ccc;text-align:center" data-linkMan='{{item.fullName}}' data-tel='{{item.tel}}'  class="float-left" onTap="{{linkData.onaddfollow}}">
+                              <image style="width:15px;height:14px;margin-right: 10px;" src="../../../../images/revise.png" class="iconsize" />
+                              <text style="color:#FBAB4A">新增跟进</text>
+                            </view>
+                            <view style="width:49%;text-align:center" class="float-left"  data-id="{{item.id}}" onTap="{{linkData.onchecklink}}">
+                              <image style="width:15px;height:12px;margin-right: 10px;" src="../../../../images/look.png" class="iconsize" />
+                              <text style="color:#66CCCC">查看信息</text>
+                            </view>
+                        </view>
+                      </view>
+                    </view>
+                </block>
+            </view>
+            <view class="list-bottom-msg"  a:if="{{linkData.isload}}">{{linkData.loadtext}}</view>
+          </scroll-view>
+        </view>
+        <view style="position:absolute;bottom:100px;right:20px;width:40px;height:60px">
+            <view onTap="linkrefreshre"><image style="width:30px;height:28px" src="../../../../images/reject.png" class="imagesbtn" /></view>
+            <navigator url="../LinkMan/LinkMan?custId={{customer.custId}}" hover-class="navigator-hover"><image class="imagesbtn" style="width:30px;height:28px" src="../../../../images/count-plus.png" /></navigator>
+        </view>
+      </view>
+</view>
